@@ -1,0 +1,8 @@
+{
+  "package_name":"com.ihealth.kd5907.ios",
+  "developer_id":"108681183",
+  "models":"ihealth.bpm.kd5907",
+  "min_api_level":"108",
+  "version":"6",
+  "platform":"iphone"
+}
