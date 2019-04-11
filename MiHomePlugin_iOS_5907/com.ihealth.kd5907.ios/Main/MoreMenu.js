@@ -133,10 +133,17 @@ class MoreMenu extends Component {
       this.setState({deviceNameStr: str});
         ihealth.log('componentDidMount----'+str);
     });
+
+    this._deviceCancelAuthorization = DeviceEventEmitter.addListener(MHPluginSDK. deviceCancelAuthorization,(event) => {
+      var str=this.interceptionStringsWithCount(event.newName, 20);
+      this.setState({deviceNameStr: str});
+    });
+
   }
 
   componentWillUnmount() {
     this._deviceNameChangedListener.remove();
+    this._deviceCancelAuthorization.remove();
   }
 
   //设备重命名

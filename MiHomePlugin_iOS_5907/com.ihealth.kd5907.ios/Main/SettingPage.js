@@ -9,6 +9,7 @@ var DeviceInformation = require('./DeviceInformation');
 var PrivacyAgreement = require('./PrivacyAgreement');
 var ihealth = require('../CommonModules/ihealth');
 var Aes = require('../CommonModules/Aes');
+var BPM1MoreHelp = require('./BPM1MoreHelp');
 var MHPluginSDK = require('NativeModules').MHPluginSDK;
 var MoreMenu = require('./MoreMenu');
 var Dimensions = require('Dimensions');
@@ -87,7 +88,9 @@ class SettingPage extends Component {
         var rowAccessWeChat = this._createMenuRow(AccessWeChat);
         var rowDeviceInformation = this._createMenuRow(DeviceInformation);
         var rowMoreMenu = this._createMenuRow(MoreMenu);
+        var rowFeedBack = this._createMenuRow(BPM1MoreHelp);
         var rowPrivacyAgreement = this._createMenuRow(PrivacyAgreement);
+        
 
 
         return (
@@ -102,8 +105,11 @@ class SettingPage extends Component {
                     {rowMoreMenu}
                     {/*设备信息*/}
                     {rowDeviceInformation}
+                    {/*帮助*/}
+                    {rowFeedBack}
                     {/*隐私政策与用户协议*/}
                     {rowPrivacyAgreement}
+                    
                 </View>
             </View>
         );

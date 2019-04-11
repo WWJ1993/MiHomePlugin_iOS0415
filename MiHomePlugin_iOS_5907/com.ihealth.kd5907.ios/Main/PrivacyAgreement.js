@@ -8,8 +8,8 @@ var React = require('react-native');
 var MHPluginSDK = require('NativeModules').MHPluginSDK;
 var AgreementPage = require('./AgreementPage');
 var PrivacyPage = require('./PrivacyPage');
-
 var Dimensions = require('Dimensions');
+
 const { height,width } = Dimensions.get('window');
 var {
     StyleSheet,
@@ -21,6 +21,7 @@ var {
     Text,
     Component,
     Image,
+    Alert,
 } = React;
 
 let APPBAR_MARGINTOP = 0;
@@ -34,6 +35,7 @@ class PrivacyAgreement extends Component {
     render() {
         var rowAgreementPage = this._createPageRow(AgreementPage);
         var rowPrivacyPage = this._createPageRow(PrivacyPage);
+        var rowDeleteDevice = this._createMenuRowA('撤销使用条款和隐私政策授权');
 
         return (
             <View style={styles.containerAll}>
@@ -44,7 +46,10 @@ class PrivacyAgreement extends Component {
                     {rowAgreementPage}
                     {/*隐私协议*/}
                     {rowPrivacyPage}
+                    {/*解除连接*/}
+                    {rowDeleteDevice}
                 </View>
+
             </View>
         );
     }
@@ -69,22 +74,129 @@ class PrivacyAgreement extends Component {
             (<View key={"sep_" + component.route.title} style={styles.separator}/>)
         ];
     }
+    _createMenuRowA(component){
+        return [
+          (<TouchableHighlight key={"touch_"+component} style={{alignSelf:'stretch', flexDirection: 'row', height: 58}} underlayColor='#838383' onPress={()=>{this._component(component)}}>
+            <View style={{flexDirection: 'row', flex: 1, height: 58}}>
+              <Text style={{fontSize: 16, alignItems: 'center', alignSelf: 'center', color: '#333333', flex: 2, width: 200, marginLeft:24}}>{component}</Text>
+              <View style={{flex: 1, justifyContent:'center', alignItems:'flex-end'}}>
+                <Image style={{ width: 15, height: 15, marginRight: 24}} source={this.props.app.sourceOfImage("sub_arrow.png")} />
+              </View>
+            </View>
+          </TouchableHighlight>),
+          (<View key={"sep_"+component} style={styles.separator} />)
+        ];
+      }
 
-    _onOpenSubPage(subPageComponent) {
+
+      _component(component){
+        var comp;
+        switch (component){
+            case '撤销使用条款和隐私政策授权':
+            // comp = MHPluginSDK.deviceCancelAuthorization;
+            //弹出提示框
+            Alert.alert(
+                       '确定撤销授权吗？',
+                       '撤销授权后，设备会与您当前登陆的账号解除绑定并清除该设备之前存储在服务端的数据；物理设备中存储的数据需要您进行人工本地物理重置后清除，若设备支持，您可以直接在设备上进行重置或参照\"隐私政策\"中的撤销授权进行重置，上述数据撤销后均不可恢复，若要重新使用设备，需要您再次进行绑定并且重新授权',
+                       [
+                         {text: '取消', onPress: () => {
+                        //    var descriptor = this.props.descriptor;
+                        //    MHBluetoothLE.readDescriptorValue(descriptor.peripheral, descriptor.service, descriptor.characteristic, descriptor.uuid, (error, result, body) => {
+                        //      if (!error) {
+                        //        alert(JSON.stringify(body));
+                        //      }else {
+                        //         alert('error:'+error.message+JSON.stringify(result));
+                        //      }
+                        //    });
+                         }},
+                         {text: '确定', onPress: () => {
+                        //    var descriptor = this.props.descriptor;
+                        //    MHBluetoothLE.writeDescriptorValue(descriptor.peripheral, descriptor.service, descriptor.characteristic, descriptor.uuid, '9f085a', (error, result) => {
+                        //      if (error) {
+                        //        alert(JSON.stringify(error));
+                        //      }
+                        //    });
+
+                           
+                         }},
+                       ]
+                     )
+            break;
+          default:
+            break;
+        }
+        return comp
+      }
+    
+    //   interceptionStringsWithCount(string, count){
+    //     var str=string;
+    //     var charCount=0;
+    //     var bytesCount=0;
+    //     for (var i = 0; i < str.length; i++)
+    //     {
+    //       var c = str.charAt(i);
+    //       var char2=false;
+    
+    //       charCount++;
+    //       if (/^[\u0000-\u00ff]$/.test(c)) //匹配双字节
+    //       {
+    //         bytesCount += 1;
+    //       }
+    //       else
+    //       {
+    //         char2=true;
+    //         bytesCount += 2;
+    //       }
+    
+    //       if(bytesCount>count ){
+    //         if(char2){
+    //           str=str.substring(0,charCount-2);
+    //         }else{
+    //           str=str.substring(0,charCount-1);
+    //         }
+    //         str = str+'...'
+    //         break;
+    //       }
+    //     }
+    //     return str;
+    //   }
+    
+    //   componentDidMount(){
+    
+    
+    //     this._deviceCancelAuthorization = DeviceEventEmitter.addListener(MHPluginSDK. deviceCancelAuthorization,(event) => {
+    //       var str=this.interceptionStringsWithCount(event.newName, 20);
+    //       this.setState({deviceNameStr: str});
+    //     });
+    
+    //   }
+
+    //   componentWillMount() { 
+    //     this._deviceCancelAuthorization = DeviceEventEmitter.addListener(MHPluginSDK. deviceCancelAuthorization, (event) => {
+
+    //        var str=this.interceptionStringsWithCount(event.newName, 20);
+    //        this.setState({deviceNameStr: str});
+    //     });
+    //   }
+      
+    //   componentWillUnmount() {
+    //     this._deviceCancelAuthorization.remove();
+    //   }
+    
+    
+      _onOpenSubPage(subPageComponent) {
         function subPage() {
-            this.props.navigator.push({
-                ...subPageComponent.route,
-                passProps: {
-                    message: 'amazing!',
-                },
-            });
+          this.props.navigator.push({
+            ...subPageComponent.route,
+            passProps: {
+              message: 'amazing!',
+            },
+          });
         }
         return subPage;
-    }
-
-
-}
-
+      }
+    
+    };
 
 var styles = StyleSheet.create({
     containerAll: {
@@ -129,6 +241,8 @@ var styles = StyleSheet.create({
         marginRight: 15,
     },
 });
+
+
 
 
 

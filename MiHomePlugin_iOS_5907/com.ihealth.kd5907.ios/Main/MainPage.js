@@ -101,6 +101,7 @@ var BUTTONS = [
 
 class MainPage extends React.Component {
 
+
     constructor(props, context) {
         super(props, context);
 
@@ -323,10 +324,20 @@ class MainPage extends React.Component {
 
         });
     }
-
+    
+    showAuthDialog() {
+        MHPluginSDK.openPrivacyLicense("license","licenseURL","policy","policyURL",(result)=>{
+          if(result == "ok") {
+  
+          } else {
+  
+          }
+        })
+      }
     componentDidMount() {
         viewUnmount = false;
         this.loginVerification();
+        this.showAuthDialog();
     }
 
     componentWillUnmount(){
@@ -640,7 +651,13 @@ class MainPage extends React.Component {
               <StatusBar barStyle='default' />
 
               <View style={styles.fatherTitle}>
-                <Text style={styles.fatherTitleText}>{strings.DadsBloodPressure}</Text>
+                <Text style={styles.fatherTitleText}>
+                    <Image
+                        source={{isStatic:!this.state.devMode, uri:this.state.basePath + "peoper@2x.png"}}
+                        style={(this.state.screenWidth != 320)?({marginRight: 15,width: 15,height: 15,alignSelf: 'center'}):({marginRight: 15,width: 15,height: 15,alignSelf: 'center'})}/>
+                    {/*{strings.DadsBloodPressure}*/}
+                    1 测的血压
+                    </Text>
                 <Text style={styles.fatherUnit}>mmHg</Text>
               </View>
 
@@ -701,7 +718,13 @@ class MainPage extends React.Component {
               <View style={styles.fatherGap}>
               </View>
               <View style={styles.motherTitle}>
-                <Text style={styles.motherTitleText}>{strings.MothersBloodPressure}</Text>
+                <Text style={styles.motherTitleText}>
+                    <Image
+                        source={{isStatic:!this.state.devMode, uri:this.state.basePath + "peoper@2x.png"}}
+                        style={(this.state.screenWidth != 320)?({marginRight: 15,width: 15,height: 15,alignSelf: 'center'}):({marginRight: 15,width: 15,height: 15,alignSelf: 'center'})}/>
+                    {/*{strings.MothersBloodPressure}*/}
+                    2 测的血压
+                    </Text>
                 <Text style={styles.motherUnit}>mmHg</Text>
               </View>
               <View style={styles.motherContainer}>

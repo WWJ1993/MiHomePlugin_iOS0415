@@ -1,6 +1,8 @@
 /**
  * Created by guobo on 2018/05/28.
  */
+
+
 'use strict';
 var strings = require('../CommonModules/ihealthLocalizedString');
 var ihealth = require('../CommonModules/ihealth');
@@ -32,7 +34,8 @@ var AgreementPage = React.createClass({
             apiLevel: MHPluginSDK.apiLevel,
             basePath: MHPluginSDK.basePath,
             devMode: MHPluginSDK.devMode,
-            bpHelpImage: MHPluginSDK.basePath + 'ihealthBPHelp.png',
+            // bpHelpImage: MHPluginSDK.basePath + 'ihealthBPHelp.png',
+            bpHelpImage: MHPluginSDK.basePath + 'WechatIMG4.png',
             screenHeight: Dimensions.get('window').height,
             screenWidth: Dimensions.get('window').width,
             status: false
@@ -48,6 +51,9 @@ var AgreementPage = React.createClass({
                     source={{uri:'https://cnbj2.fds.api.xiaomi.com/ihealth-reg-user-profile/UserAgreementMiHomePlugin.html'}}
                     style={{position:'absolute', width:this.state.screenWidth,height:this.state.screenHeight - 64}}
                 />
+
+
+
             </View>
         );
     }

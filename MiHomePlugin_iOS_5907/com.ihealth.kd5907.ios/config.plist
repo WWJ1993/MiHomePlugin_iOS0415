@@ -11,6 +11,8 @@
         	    <integer>0</integer><!-- 0 polling, 1 subscribe, 2 not get-->
         	    <key>supportIPhoneX</key>
         		<true/>
+		    <!-- <key>isShowPrivacyItemsInSettingView</key>
+        		<true/> -->
 
 <!--	<key>customSceneTriggerIds</key>
 	<array>

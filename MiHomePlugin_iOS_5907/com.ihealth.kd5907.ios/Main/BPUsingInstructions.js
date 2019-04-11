@@ -27,7 +27,8 @@ var BPUsingInstructions = React.createClass({
             apiLevel: MHPluginSDK.apiLevel,
             basePath: MHPluginSDK.basePath,
             devMode: MHPluginSDK.devMode,
-            bpHelpImage: MHPluginSDK.basePath + 'ihealthBPHelp.png',
+            // bpHelpImage: MHPluginSDK.basePath + 'ihealthBPHelp.png',
+            bpHelpImage: MHPluginSDK.basePath + 'WechatIMG4.png',
             screenHeight: Dimensions.get('window').height,
             screenWidth: Dimensions.get('window').width,
             status: false
@@ -39,8 +40,8 @@ var BPUsingInstructions = React.createClass({
             <View style={{flex:1}}>
                 <View style={{marginTop:64, height:0.5, width:width, backgroundColor: '#d0d0d0'}}>
                 </View>
-                <ScrollView automaticallyAdjustContentInsets={false} contentContainerStyle={{backgroundColor: '#f8f8f8',flexDirection: 'column', height: 1035*this.state.screenWidth/320, marginTop: 0}}>
-                    <Image style={{position:'absolute', resizeMode:'stretch', top:37*this.state.screenWidth/320, left:25*this.state.screenWidth/320, width:270*this.state.screenWidth/320, height:965*this.state.screenWidth/320}} source={{isStatic:!this.state.devMode, uri:this.state.bpHelpImage}} />
+                <ScrollView automaticallyAdjustContentInsets={false} contentContainerStyle={{backgroundColor: '#ffffff',flexDirection: 'column', height: 1035*this.state.screenWidth/320, marginTop: 0}}>
+                    <Image style={{position:'absolute', resizeMode:'stretch', top:this.state.screenWidth/320, left:25*this.state.screenWidth/320, width:270*this.state.screenWidth/320, height:965*this.state.screenWidth/320}} source={{isStatic:!this.state.devMode, uri:this.state.bpHelpImage}} />
                 </ScrollView>
             </View>
         );

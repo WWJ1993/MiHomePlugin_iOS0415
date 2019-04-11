@@ -29,7 +29,7 @@ class BPM1MoreHelp extends Component{
 
     render() {
         var rowUsingInstruction = this._createUsingInstructionRow(BPUsingInstructions);
-        var rowFeedBack = this._createFeedBackRow('帮助与反馈');
+        var rowFeedBack = this._createFeedBackRow('常见问题');
 
         return (
             <View style={styles.containerAll}>
@@ -139,7 +139,7 @@ var styles = StyleSheet.create({
 
 var route = {
     key: 'BPM1MoreHelp',
-    title: '反馈',
+    title: '帮助',
     component: BPM1MoreHelp,
     renderNavRightComponent: function(route, navigator, index, navState) {
         return (

@@ -82,6 +82,7 @@ class PluginApp extends React.Component {
     }
     else { // 正常进入插件首页
       this._firstPage = MainPage;
+
     }
 
     var navigationBarRouteMapper = {

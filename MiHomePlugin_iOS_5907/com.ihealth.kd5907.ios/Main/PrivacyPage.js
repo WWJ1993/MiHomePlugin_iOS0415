@@ -30,7 +30,8 @@ var PrivacyPage = React.createClass({
             apiLevel: MHPluginSDK.apiLevel,
             basePath: MHPluginSDK.basePath,
             devMode: MHPluginSDK.devMode,
-            bpHelpImage: MHPluginSDK.basePath + 'ihealthBPHelp.png',
+            // bpHelpImage: MHPluginSDK.basePath + 'ihealthBPHelp.png',
+            bpHelpImage: MHPluginSDK.basePath + ' WechatIMG4.png',
             screenHeight: Dimensions.get('window').height,
             screenWidth: Dimensions.get('window').width,
             status: false
