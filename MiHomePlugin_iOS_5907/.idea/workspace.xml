@@ -27,7 +27,7 @@
         <entry file="file://$PROJECT_DIR$/com.ihealth.kd5907.ios/packageInfo.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -35,8 +35,17 @@
       <file leaf-file-name="MainPage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com.ihealth.kd5907.ios/Main/MainPage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8778">
-              <caret line="704" column="35" lean-forward="true" selection-start-line="704" selection-start-column="35" selection-end-line="704" selection-end-column="35" />
+            <state relative-caret-position="433">
+              <caret line="1031" column="16" selection-start-line="1031" selection-start-column="16" selection-end-line="1031" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.ios.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/com.ihealth.kd5907.ios/Main/index.ios.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="29">
+              <caret line="187" column="23" selection-start-line="187" selection-start-column="23" selection-end-line="187" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -44,17 +53,17 @@
       <file leaf-file-name="AgreementPage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com.ihealth.kd5907.ios/Main/AgreementPage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
+            <state relative-caret-position="60">
               <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrivacyAgreement.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PrivacyAgreement.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com.ihealth.kd5907.ios/Main/PrivacyAgreement.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="37" column="16" lean-forward="true" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+              <caret line="39" column="16" lean-forward="true" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -71,8 +80,8 @@
       <file leaf-file-name="AccessWeChat.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com.ihealth.kd5907.ios/Main/AccessWeChat.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="79" column="23" lean-forward="true" selection-start-line="71" selection-start-column="16" selection-end-line="79" selection-end-column="23" />
+            <state relative-caret-position="1185">
+              <caret line="79" column="23" selection-start-line="71" selection-start-column="16" selection-end-line="79" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -97,8 +106,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>_createMenuRow</find>
-      <find>ihealth</find>
       <find>DearRemind</find>
       <find>爸爸测的</find>
       <find>用户</find>
@@ -120,13 +127,15 @@
       <find>ihealthBPIcon</find>
       <find>ihealthWeChatShare</find>
       <find>MoreMenu</find>
-      <find>render</find>
       <find>getQrcode</find>
       <find>fetchQRcodeData</find>
       <find>deviceName</find>
       <find>bpm1DataUpdate</find>
       <find>viewUnmount</find>
       <find>rowPrivacyPage</find>
+      <find>render</find>
+      <find>fatherGap</find>
+      <find>didmount</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/structure</dir>
@@ -216,16 +225,17 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="69" />
-    <option name="y" value="23" />
+    <option name="x" value="58" />
+    <option name="y" value="-746" />
     <option name="width" value="1280" />
-    <option name="height" value="724" />
+    <option name="height" value="732" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -241,13 +251,13 @@
             <path>
               <item name="MiHomePlugin_iOS_5907" type="b2602c69:ProjectViewProjectNode" />
               <item name="MiHomePlugin_iOS_5907" type="462c0819:PsiDirectoryNode" />
-              <item name="com.xiaomi.artanimdemo.ios" type="462c0819:PsiDirectoryNode" />
+              <item name="com.ihealth.kd5907.ios" type="462c0819:PsiDirectoryNode" />
+              <item name="Main" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -305,31 +315,33 @@
       <workItem from="1531916009362" duration="1000000" />
       <workItem from="1531989209951" duration="19579000" />
       <workItem from="1554896289174" duration="2592000" />
+      <workItem from="1556084515914" duration="1923000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107279000" />
+    <option name="totallyTimeSpent" value="109202000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="69" y="23" width="1280" height="724" extended-state="0" />
+    <frame x="58" y="-746" width="1280" height="732" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22557585" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22557585" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5202542" side_tool="true" visible="true" weight="0.2966507" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5210484" side_tool="true" visible="true" weight="0.14645669" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.47974584" visible="true" weight="0.2966507" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.47895154" visible="true" weight="0.14645669" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
@@ -435,13 +447,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1170">
           <caret line="65" column="32" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com.ihealth.kd5907.ios/Main/index.ios.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="301" lean-forward="true" selection-start-line="301" selection-end-line="301" />
         </state>
       </provider>
     </entry>
@@ -587,35 +592,42 @@
     <entry file="file://$PROJECT_DIR$/com.ihealth.kd5907.ios/packageInfo.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com.ihealth.kd5907.ios/Main/MainPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8778">
-          <caret line="704" column="35" lean-forward="true" selection-start-line="704" selection-start-column="35" selection-end-line="704" selection-end-column="35" />
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/com.ihealth.kd5907.ios/Main/AgreementPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
+        <state relative-caret-position="60">
           <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/com.ihealth.kd5907.ios/Main/AccessWeChat.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="79" column="23" lean-forward="true" selection-start-line="71" selection-start-column="16" selection-end-line="79" selection-end-column="23" />
+        <state relative-caret-position="1185">
+          <caret line="79" column="23" selection-start-line="71" selection-start-column="16" selection-end-line="79" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/com.ihealth.kd5907.ios/Main/PrivacyAgreement.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="37" column="16" lean-forward="true" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+          <caret line="39" column="16" lean-forward="true" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com.ihealth.kd5907.ios/Main/MainPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="1031" column="16" selection-start-line="1031" selection-start-column="16" selection-end-line="1031" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com.ihealth.kd5907.ios/Main/index.ios.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="187" column="23" selection-start-line="187" selection-start-column="23" selection-end-line="187" selection-end-column="23" />
         </state>
       </provider>
     </entry>

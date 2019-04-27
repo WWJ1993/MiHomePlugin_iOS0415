@@ -42,11 +42,12 @@ class MoreMenu extends Component {
   }
 
   render() {
-    var rowChangeDeviceName = this._createChangeDeviceNameRow('重命名');
-    var rowShareDevicePage =  this._createMenuRowA('设备共享');
-    var rowDeleteDevice = this._createMenuRowA('解除连接');
-    var rowDeviceUpgrade = this._createMenuRowA('检查固件更新');
-    var rowFeedBack = this._createMenuRow(BPM1MoreHelp);
+    var rowChangeDeviceName = this._createChangeDeviceNameRow(strings.重命名);
+    var rowShareDevicePage =  this._createMenuRowA(strings.设备共享);
+    var rowDeleteDevice = this._createMenuRowA(strings.解除连接);
+    var rowDeviceUpgrade = this._createMenuRowA(strings.检查固件更新);
+    // var rowFeedBack = this._createMenuRow(BPM1MoreHelp);
+    var rowFeedBack =  this._createFeedBackRow(strings.feedback);
 
     return (
         <View style={styles.containerAll} >
@@ -71,16 +72,16 @@ class MoreMenu extends Component {
   _component(component){
     var comp;
     switch (component){
-      case '重命名':
+      case strings.重命名:
           comp = MHPluginSDK.openChangeDeviceName();
         break;
-      case '设备共享':
+      case strings.设备共享:
           comp = MHPluginSDK.openShareDevicePage();
         break;
-      case '解除连接':
+      case strings.解除连接:
         comp = MHPluginSDK.openDeleteDevice();
         break;
-      case '检查固件更新':
+      case strings.检查固件更新:
         comp = MHPluginSDK.openDeviceUpgradePage();
         break;
       case '反馈':
@@ -133,17 +134,11 @@ class MoreMenu extends Component {
       this.setState({deviceNameStr: str});
         ihealth.log('componentDidMount----'+str);
     });
-
-    this._deviceCancelAuthorization = DeviceEventEmitter.addListener(MHPluginSDK. deviceCancelAuthorization,(event) => {
-      var str=this.interceptionStringsWithCount(event.newName, 20);
-      this.setState({deviceNameStr: str});
-    });
-
   }
 
   componentWillUnmount() {
     this._deviceNameChangedListener.remove();
-    this._deviceCancelAuthorization.remove();
+
   }
 
   //设备重命名
@@ -199,6 +194,25 @@ class MoreMenu extends Component {
       (<View key={"sep_"+component.route.title} style={styles.separator} />)
     ];
   }
+
+
+  _createFeedBackRow(component) {
+    return [
+        (<TouchableHighlight key={"touch_"+component} style={styles.rowContainer} underlayColor='#838383' onPress={()=>MHPluginSDK.openFeedbackInput()}>
+            <View style={{flexDirection: 'row', flex: 1, height: 58}}>
+
+                <Text style={{fontSize: 16, alignItems: 'center', alignSelf: 'center', color: '#333333', flex: 2, width: 200, marginLeft:24}}>{component}</Text>
+
+                <View style={{flex: 1, justifyContent:'center', alignItems:'flex-end'}}>
+                    <Image style={{ width: 15, height: 15, marginRight: 24}} source={this.props.app.sourceOfImage("sub_arrow.png")} />
+                </View>
+
+            </View>
+
+        </TouchableHighlight>),
+        (<View key={"sep_"+component} style={styles.separator} />)
+    ];
+}
 
   _onOpenSubPage(subPageComponent) {
     function subPage() {

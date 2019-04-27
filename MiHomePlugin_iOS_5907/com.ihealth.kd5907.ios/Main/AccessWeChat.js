@@ -35,8 +35,8 @@ var AccessWeChat = React.createClass({
             devMode: MHPluginSDK.devMode,
             attentionImage: MHPluginSDK.basePath + 'ihealthAttention.png',
             richScanImage: MHPluginSDK.basePath + 'ihealthRichScan.png',
-            ihealthBPIcon: MHPluginSDK.basePath + 'ihealthBP5907Icon.png',
-            ihealthWeChatShare: MHPluginSDK.basePath + 'ihealthBp5907WeChatShare.png',
+            ihealthBPIcon: MHPluginSDK.basePath + 'ihealthBPIcon.png',
+            ihealthWeChatShare: MHPluginSDK.basePath + 'ihealthWeChatShare.png',
             ihealthButton: MHPluginSDK.basePath + 'ihealthButton.png',
             ihealthPlusButton: MHPluginSDK.basePath + 'ihealthplus.png',
             ihealthPadButton: MHPluginSDK.basePath + 'ihealthipad.png',
@@ -91,9 +91,13 @@ var AccessWeChat = React.createClass({
                     'https://act.ihealthlabs.com.cn/actFront/qrcode/index.html'+'?Un='+MHPluginSDK.userId+
                     '@mi&VerifyToken='+this.props.verifyToken+
                     '&Did='+MHPluginSDK.deviceId+
-                    '&Mac='+this.props.SN+
-                    '&deviceModel='+packageInfoData.models);
+                    '&Mac='+this.props.SN
+                    +'&deviceModel='+packageInfoData.models
+                    );
+
+                    
             }
+
         }
         return subPage;
     },
@@ -112,8 +116,10 @@ var AccessWeChat = React.createClass({
         ihealth.log("fetchQRcodeData", "开始请求数据了");
         var bodyDic={};
 
-        var UploadData = '{"device_list":[{"auth_key":"" , "auth_ver":"0", "close_strategy":"1", "conn_strategy":"1", "connect_protocol":"4", "crypt_method":"0", "id":"'+MHPluginSDK.deviceId+'", "mac":"'+this.props.SN+'", "manu_mac_pos":"-1", "ser_mac_pos":"-2"}], "device_num":"1", "op_type":"0", "tokentype":"bpm1"}';
-
+        var UploadData = '{"device_list":[{"auth_key":"" , "auth_ver":"0", "close_strategy":"1", "conn_strategy":"1", "connect_protocol":"4", "crypt_method":"0", "id":"'+MHPluginSDK.deviceId+'", "mac":"'+this.props.SN+'","deviceType":"4", "manu_mac_pos":"-1", "ser_mac_pos":"-2"}], "device_num":"1", "op_type":"0", "tokentype":"bpm1"}';
+        
+        console.log('-----------wechart-----UploadData',UploadData);
+        
         ihealth.log("UploadData", UploadData);
         bodyDic.verifyToken = this.props.verifyToken;
         bodyDic.queueNum = '106';
@@ -124,7 +130,9 @@ var AccessWeChat = React.createClass({
         //添加loading页面
         MHPluginSDK.showLoadingTips('');
         getQRcode(bodyDic, (isSuccess, responseData, errorStatus)=>{
+            
 
+            console.log('-----------wechart-----responseData',responseData)
             //请求返回,隐藏等待指示
             MHPluginSDK.dismissTips();
 

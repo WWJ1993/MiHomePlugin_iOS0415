@@ -39,16 +39,30 @@ var PrivacyPage = React.createClass({
     },
     render() {
         ihealth.log("render", "进入帮助页面了");
-        return (
-            <View style={{flex:1}}>
-                <View style={{marginTop:64 + APPBAR_MARGINTOP, height:0.5, width:width, backgroundColor: '#d0d0d0'}}>
+        if (strings.PrivacyPolicy == '隐私政策') {
+            return (
+                <View style={{flex:1}}>
+                    <View style={{marginTop:64 + APPBAR_MARGINTOP, height:0.5, width:width, backgroundColor: '#d0d0d0'}}>
+                    </View>
+                    <WebView
+                        source={{uri:'https://cnbj2.fds.api.xiaomi.com/ihealth-reg-user-profile/PrivacyPolicyMiHomePlugin.html'}}
+                        style={{position:'absolute', width:this.state.screenWidth,height:this.state.screenHeight - 64}}
+                    />
                 </View>
-                <WebView
-                    source={{uri:'https://cnbj2.fds.api.xiaomi.com/ihealth-reg-user-profile/PrivacyPolicyMiHomePlugin.html'}}
-                    style={{position:'absolute', width:this.state.screenWidth,height:this.state.screenHeight - 64}}
-                />
-            </View>
-        );
+            );
+        } else if (strings.PrivacyPolicy == 'Privacy Policy') {
+            return (
+                <View style={{flex:1}}>
+                    <View style={{marginTop:64 + APPBAR_MARGINTOP, height:0.5, width:width, backgroundColor: '#d0d0d0'}}>
+                    </View>
+                    <WebView
+                        source={{uri:'https://cnbj2.fds.api.xiaomi.com/ihealth-reg-user-profile/PrivacyPolicyMiHomePlugin_EN.html'}}
+                        style={{position:'absolute', width:this.state.screenWidth,height:this.state.screenHeight - 64}}
+                    />
+                </View>
+            );
+        }
+        
     }
 });
 

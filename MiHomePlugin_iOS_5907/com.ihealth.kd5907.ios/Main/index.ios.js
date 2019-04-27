@@ -33,7 +33,7 @@ const {
 
 // NavigationExperimental目前还有bug，只能还是先用原来的navigator
 // var Navigator = NavigationExperimental.LegacyNavigator;
-
+var strings = require('../CommonModules/ihealthLocalizedString');
 var MHPluginSDK = require('NativeModules').MHPluginSDK;
 var {height:screenHeight, widt:screenWidth} = Dimensions.get('window');
 var ImageButton = require('../CommonModules/ImageButton');
@@ -49,11 +49,22 @@ if (MHPluginSDK.systemInfo.mobileModel === "iPhone10,3" || MHPluginSDK.systemInf
 var MainPage = require('./MainPage');
 var SceneMain = require('./SceneMain');
 var deviceInfo = {};
-
+// var {DeviceEventEmitter} = require('react-native');
+// let subscription1 = DeviceEventEmitter.addListener(MHPluginSDK.onReceivingForegroundPushEventName,(notification) => {
+//   // 插件在前台收到push通知回调
+//   console.log(JSON.stringify(notification));
+//   console.log('888888');
+// });
 class PluginApp extends React.Component {
 
   constructor(props) {
     super(props);
+    // var subscription = DeviceEventEmitter.addListener(MHPluginSDK.onReceivingForegroundPushEventName,(notification) => {
+    //   // 插件在前台收到push通知回调
+    //   console.log(JSON.stringify(notification));
+    //   console.log('888888');
+    // });
+    // console.log('1111112222');  
 
     if (MHPluginSDK.extraInfo.value) { //自定义场景入口
       this._firstPage = SceneMain;
@@ -65,7 +76,7 @@ class PluginApp extends React.Component {
 
         var decodeStr = BaseCode64.Base64decode(MHPluginSDK.extraInfo.value);
         var bpDataArr = decodeStr.split(",");
-
+        
         deviceInfo.resultDataID = bpDataArr[0];
         deviceInfo.resultDid = bpDataArr[1];
         deviceInfo.resultHeartRate = bpDataArr[2];
@@ -78,11 +89,14 @@ class PluginApp extends React.Component {
         deviceInfo.resultMeasureTime = bpDataArr[9];
         //存储本地
         MHPluginSDK.saveInfo(deviceInfo);
+
+      
+
       });
     }
     else { // 正常进入插件首页
       this._firstPage = MainPage;
-
+      // console.log('1111112222');  
     }
 
     var navigationBarRouteMapper = {
@@ -98,8 +112,23 @@ class PluginApp extends React.Component {
                 onPress={() => {
                   if (index === 0) {
                     MHPluginSDK.closeCurrentPage();
+                  
                   } else {
+                    
                     navigator.pop();
+                    MHPluginSDK.loadInfoCallback(info=>{
+                      if (info!=null) {
+            
+                       let saveAuth = info;
+                        console.log('saveAuth',saveAuth)
+                        if(saveAuth.ifAuth==0){
+                          saveAuth.ifAuth = 1;
+                          MHPluginSDK.saveInfo(saveAuth); 
+            
+                        }
+                      }
+                  
+                    });
                   }
                 }}
                 style={[{width:29, height:29, tintColor: '#000000'}, route.navLeftButtonStyle]}
@@ -152,20 +181,24 @@ class PluginApp extends React.Component {
       }
     });
     this._didFocusListener = DeviceEventEmitter.addListener('didfocus', (event) => {
-
+      
     });
   }
 
   componentDidMount() {
 
+   
+
     this._deviceNameChangedListener = DeviceEventEmitter.addListener('EditBPDataListView_Edit', (event) => {
       event.renderNavRightComponent=this.refreshNavigatorUI_Edit;
       this.setIsNavigationBarHidden(false);
+      
     });
 
     this._deviceNameChangedListener = DeviceEventEmitter.addListener('EditBPDataListView_OK', (event) => {
       event.renderNavRightComponent=this.refreshNavigatorUI_OK;
       this.setIsNavigationBarHidden(false);
+
     });
 
     DeviceEventEmitter.emit('willfocus', {route:this._firstPage.route});
@@ -175,6 +208,8 @@ class PluginApp extends React.Component {
   componentWillUnmount() {
     this._willFocusListener.remove();
     this._didFocusListener.remove();
+
+    
   }
 
   render() {
@@ -192,6 +227,7 @@ class PluginApp extends React.Component {
         }}
         onDidFocus={(route) => {
           DeviceEventEmitter.emit('didfocus', {route:route});
+          
         }}
         renderScene={(route, navigator) => {
           if (route.component == undefined) {
@@ -247,14 +283,15 @@ class PluginApp extends React.Component {
 
   refreshNavigatorUI_Edit(route, navigator, index, navState){
       return (
-          <View style={{left:0, width:29+15*2, height:APPBAR_HEIGHT, justifyContent:'center', alignItems:'center'}}>
+          <View style={{left:0, width:45+15*2, height:APPBAR_HEIGHT, justifyContent:'center', alignItems:'center'}}>
 
-            <Text key='edit' style={{left:0, width:29+15*2, height:APPBAR_HEIGHT, color:'#FF6633', fontSize:18, paddingLeft:10, paddingTop:10}}
+            <Text key='edit' style={{left:0, width:45+15*2, height:APPBAR_HEIGHT, color:'#FF6633', fontSize:18, paddingLeft:10, paddingTop:10}}
                   onPress={() => {
                           DeviceEventEmitter.emit('EditBPDataListView_OK', route);
+                          
                       }}>
 
-              完成
+              {strings.完成}
             </Text>
           </View>
       );
@@ -267,9 +304,11 @@ class PluginApp extends React.Component {
           <Text key='edit' style={{left:0, width:29+15*2, height:APPBAR_HEIGHT, color:'#FF6633', fontSize:18, paddingLeft:10, paddingTop:10}}
                 onPress={() => {
                           DeviceEventEmitter.emit('EditBPDataListView_Edit', route);
+                          
                       }}>
 
-            编辑
+            {/* 编辑 */}
+            {strings.编辑}
           </Text>
         </View>
     );

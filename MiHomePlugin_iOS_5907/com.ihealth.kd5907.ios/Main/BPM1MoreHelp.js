@@ -6,7 +6,9 @@
 var React = require('react-native');
 var MHPluginSDK = require('NativeModules').MHPluginSDK;
 var BPUsingInstructions = require('./BPUsingInstructions');
+var Question = require('./Question');
 var Dimensions = require('Dimensions');
+var strings = require('../CommonModules/ihealthLocalizedString');
 const { height,width } = Dimensions.get('window');
 var {
     StyleSheet,
@@ -29,7 +31,8 @@ class BPM1MoreHelp extends Component{
 
     render() {
         var rowUsingInstruction = this._createUsingInstructionRow(BPUsingInstructions);
-        var rowFeedBack = this._createFeedBackRow('常见问题');
+        // var rowFeedBack = this._createFeedBackRow(strings.BPFaq);
+        var rowFeedBack = this._createUsingInstructionRow(Question);
 
         return (
             <View style={styles.containerAll}>
@@ -139,7 +142,7 @@ var styles = StyleSheet.create({
 
 var route = {
     key: 'BPM1MoreHelp',
-    title: '帮助',
+    title: strings.Help,
     component: BPM1MoreHelp,
     renderNavRightComponent: function(route, navigator, index, navState) {
         return (

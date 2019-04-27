@@ -2,7 +2,7 @@
  * Created by zhangmingli on 2016/11/11.
  */
 'use strict';
-
+var strings = require('../CommonModules/ihealthLocalizedString');
 var React = require('react-native');
 var AccessWeChat = require('./AccessWeChat');
 var DeviceInformation = require('./DeviceInformation');
@@ -136,7 +136,9 @@ class SettingPage extends Component {
     }
 
     _onOpenSubPage(subPageComponent) {
+        
         function subPage() {
+            console.log('_onOpenSubPage',this.deviceInfo);
             this.props.navigator.push({
                 ...subPageComponent.route,
                 passProps: {
@@ -150,6 +152,10 @@ class SettingPage extends Component {
         }
         return subPage;
     }
+
+    
+
+
 }
 
 var styles = StyleSheet.create({
@@ -181,7 +187,7 @@ var styles = StyleSheet.create({
 
 var route = {
     key: 'SettingPage',
-    title: '更多',
+    title: strings.更多,
     component: SettingPage,
     renderNavRightComponent: function(route, navigator, index, navState) {
         return (

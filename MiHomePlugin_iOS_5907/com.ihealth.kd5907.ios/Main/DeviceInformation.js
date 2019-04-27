@@ -84,16 +84,17 @@ var DeviceInformation = React.createClass({
                 </View>
                 <View style={{marginTop:0, height:174, width:this.state.screenWidth, flexDirection: 'column',backgroundColor: '#ffffff',alignSelf: 'stretch'}}>
                     <View style={{marginTop:0, height:58, width:this.state.screenWidth, alignSelf: 'stretch',flexDirection: 'row'}}>
-                        <Text style={styles.title}>{strings.BatteryPower}</Text>
-                        <Image style={styles.subArrow} source={{isStatic:!this.state.devMode, uri:this.state.imagePathBattery}} />
+                        <Text style={styles.title}>{strings.SerialNumber}</Text>
+                        <Text style={styles.serialNumber}>{this.props.SN}</Text>
                     </View>
 
                     <View style={styles.separator}/>
 
                     <View style={{marginTop:0, height:58, width:this.state.screenWidth, alignSelf: 'stretch',flexDirection: 'row'}}>
-                        <Text style={styles.title}>{strings.SerialNumber}</Text>
-                        <Text style={styles.serialNumber}>{this.props.SN}</Text>
+                        <Text style={styles.title}>{strings.BatteryPower}</Text>
+                        <Image style={styles.subArrow} source={{isStatic:!this.state.devMode, uri:this.state.imagePathBattery}} />
                     </View>
+                    
 
                     <View style={styles.separator}/>
 
@@ -107,7 +108,7 @@ var DeviceInformation = React.createClass({
 
                 <View style={{marginTop:0, height:58, width:this.state.screenWidth, alignSelf: 'stretch',flexDirection: 'row',backgroundColor: '#ffffff'}}>
                     <Text style={styles.title}>{strings.PluginVersion}</Text>
-                    <Text style={styles.serialNumber}>{"V1.0.0"}</Text>
+                    <Text style={styles.serialNumber}>{"V1.0.1"}</Text>
                 </View>
                 <View style={styles.separator}/>
             </View>
@@ -121,37 +122,40 @@ var DeviceInformation = React.createClass({
         bodyDic.verifyToken = this.props.verifyToken;
         bodyDic.queueNum = '107';
         bodyDic.mDeviceId = this.state.did;
+        console.log('------did-----',this.state.did);
         bodyDic.AppGuid = this.props.AppGuid;
         bodyDic.PhoneID = this.props.PhoneID;
         bodyDic.sv = 'c7d2bbd8c0ec4e9493a4a97bc9bf0afb';
         bodyDic.ApiType = 'deviceGetStatus';
+        bodyDic.deviceModel='ihealth.bpm.kd5907';
         getDeviceConfig(
             bodyDic,
             (isSuccess, responseData, errorStatus)=>{
 
                 ihealth.log('getDeviceBatteryInfo---回调函数', 'isSuccess:' + isSuccess + 'responseData:' + JSON.stringify(responseData) + 'errorStatus:' + errorStatus);
-
+                console.log('getDeviceBatteryInfo---回调函数', 'isSuccess:' + isSuccess + 'responseData:' + JSON.stringify(responseData) + 'errorStatus:' + errorStatus);
                 if (isSuccess) {
-
+                    
                     //电池电量
                     deviceInfo.Battery = responseData.ReturnValue.DeviceConfig.Battery;
 
                     //存储设备硬件版本号
                     deviceInfo.HwVer = responseData.ReturnValue.DeviceConfig.HwVer;
-
+                    deviceInfo.mcu_fw_ver = responseData.ReturnValue.DeviceConfig.fw_ver;
                     //存储设备软件版本号（序列号）
-                    var mcu_fw_ver1 = responseData.ReturnValue.DeviceConfig.mcu_fw_ver;
-                    if (mcu_fw_ver1 !== "" && (mcu_fw_ver1.length > 3)) {
-                        mcu_fw_ver1 = 'V' + mcu_fw_ver1.charAt(0) + '.' + mcu_fw_ver1.charAt(1) + '.' + mcu_fw_ver1.charAt(2);
-                        deviceInfo.mcu_fw_ver = mcu_fw_ver1;
-                        mcu_fw_ver = mcu_fw_ver1
-                        ihealth.log('getDeviceBatteryInfo---服务器传回来的序列号:', mcu_fw_ver1);
-                        //刷新序列号
-                        this.setState({"mcu_fw_ver": deviceInfo.mcu_fw_ver});
-                    }else{
-                        ihealth.log("getDeviceBatteryInfo", "服务器传回来的序列号为空");
-                    }
-
+                    // var mcu_fw_ver1 = responseData.ReturnValue.DeviceConfig.fw_ver;
+                    // //固件版本号
+                    // if (mcu_fw_ver1 !== "" && (mcu_fw_ver1.length > 3)) {
+                    //     mcu_fw_ver1 = 'V' + mcu_fw_ver1.charAt(0) + '.' + mcu_fw_ver1.charAt(1) + '.' + mcu_fw_ver1.charAt(2);
+                    //     deviceInfo.mcu_fw_ver = mcu_fw_ver1;
+                    //     mcu_fw_ver = mcu_fw_ver1
+                    //     ihealth.log('getDeviceBatteryInfo---服务器传回来的序列号:', mcu_fw_ver1);
+                    //     //刷新序列号
+                    //     this.setState({"mcu_fw_ver": deviceInfo.mcu_fw_ver});
+                    // }else{
+                    //     ihealth.log("getDeviceBatteryInfo", "服务器传回来的序列号为空");
+                    // }
+                    console.log('------deviceInfo-----',deviceInfo);
                     //存储本地
                     MHPluginSDK.saveInfo(deviceInfo);
 

@@ -98,12 +98,26 @@ var BUTTONS = [
     '帮助与反馈',
     '取消',
 ];
+var saveAuth = {};
+
+// let subscription1 = DeviceEventEmitter.addListener(MHPluginSDK.onReceivingForegroundPushEventName,(notification) => {
+//     // 插件在前台收到push通知回调
+//     console.log(JSON.stringify(notification));
+//     console.log('888888');
+//   });
 
 class MainPage extends React.Component {
 
 
     constructor(props, context) {
         super(props, context);
+
+        // var a = DeviceEventEmitter.addListener(MHPluginSDK.onReceivingForegroundPushEventName,(notification) => {
+        //     // 插件在前台收到push通知回调
+        //     console.log(JSON.stringify(notification));
+        //     console.log('888888');
+        //   });
+        //   console.log('8888811118');
 
         deviceWidth = Dimensions.get('window').width;
         deviceHeight = Dimensions.get('window').height - 64;
@@ -129,6 +143,8 @@ class MainPage extends React.Component {
               left:0
             }
         };
+
+
     }
 
     deviceBindUser() {
@@ -326,14 +342,66 @@ class MainPage extends React.Component {
     }
     
     showAuthDialog() {
-        MHPluginSDK.openPrivacyLicense("license","licenseURL","policy","policyURL",(result)=>{
-          if(result == "ok") {
+
+        if (strings.PrivacyPolicy == '隐私政策') {
+
+            MHPluginSDK.loadInfoCallback(info=>{
+                if (info!=null) {
+                  saveAuth = info;
+                  console.log('saveAuth',saveAuth)
+                  if(saveAuth.ifAuth==1){
+                    return
+                  }
+                }
+    
+    
+                    MHPluginSDK.openPrivacyLicense("服务协议","https://cnbj2.fds.api.xiaomi.com/ihealth-reg-user-profile/UserAgreementMiHomePlugin.html",
+                "隐私政策","https://cnbj2.fds.api.xiaomi.com/ihealth-reg-user-profile/PrivacyPolicyMiHomePlugin.html",(result)=>{
+                  if(result == "ok") {
+                    
+                    saveAuth.ifAuth = 1;
+                    MHPluginSDK.saveInfo(saveAuth);
+                    console.log('saveAuth1',saveAuth)
+                  } else {
+                      this.onClosePage();
+                  }
+                })
+                
+              });
+
+        }else if (strings.PrivacyPolicy == 'Privacy Policy'){
+
+            MHPluginSDK.loadInfoCallback(info=>{
+                if (info!=null) {
+                  saveAuth = info;
+                  console.log('saveAuth',saveAuth)
+                  if(saveAuth.ifAuth==1){
+                    return
+                  }
+                }
+    
+                
+                    MHPluginSDK.openPrivacyLicense("Service Agreement","https://cnbj2.fds.api.xiaomi.com/ihealth-reg-user-profile/UserAgreementMiHomePlugin_EN.html",
+                "Privacy Policy","https://cnbj2.fds.api.xiaomi.com/ihealth-reg-user-profile/PrivacyPolicyMiHomePlugin_EN.html",(result)=>{
+                  if(result == "ok") {
+                    
+                    saveAuth.ifAuth = 1;
+                    MHPluginSDK.saveInfo(saveAuth);
+                    console.log('saveAuth1',saveAuth)
+                  } else {
+                      this.onClosePage();
+                  }
+                })
+    
+                
+    
+                
+              });
+
+        }
   
-          } else {
-  
-          }
-        })
       }
+
     componentDidMount() {
         viewUnmount = false;
         this.loginVerification();
@@ -360,7 +428,7 @@ class MainPage extends React.Component {
     }
 
     renderDateView(dateArray, dataArray) {
-        if (this.state.dateLoaded === false || dataArray.length <= 0) return;
+        if (this.state.dateLoaded === false ||dataArray == undefined|| dataArray.length <= 0) return;
         return (
             <View style={styles.xLabels}>
               <Text style={styles.timeStart}>{dateArray[1]}</Text>
@@ -653,10 +721,12 @@ class MainPage extends React.Component {
               <View style={styles.fatherTitle}>
                 <Text style={styles.fatherTitleText}>
                     <Image
-                        source={{isStatic:!this.state.devMode, uri:this.state.basePath + "peoper@2x.png"}}
-                        style={(this.state.screenWidth != 320)?({marginRight: 15,width: 15,height: 15,alignSelf: 'center'}):({marginRight: 15,width: 15,height: 15,alignSelf: 'center'})}/>
-                    {/*{strings.DadsBloodPressure}*/}
-                    1 测的血压
+                        
+                        style={(this.state.screenWidth != 320)?({marginRight: 15,width: 15,height: 15,alignSelf: 'center'}):({marginRight: 15,width: 15,height: 15,alignSelf: 'center'})}
+                        source={{isStatic:!this.state.devMode, uri:this.state.basePath + "porper@2x.png"}}/>
+                    {strings.UserFBloodPressure}
+                    
+                    {/* 1 测的血压 */}
                     </Text>
                 <Text style={styles.fatherUnit}>mmHg</Text>
               </View>
@@ -720,10 +790,11 @@ class MainPage extends React.Component {
               <View style={styles.motherTitle}>
                 <Text style={styles.motherTitleText}>
                     <Image
-                        source={{isStatic:!this.state.devMode, uri:this.state.basePath + "peoper@2x.png"}}
-                        style={(this.state.screenWidth != 320)?({marginRight: 15,width: 15,height: 15,alignSelf: 'center'}):({marginRight: 15,width: 15,height: 15,alignSelf: 'center'})}/>
-                    {/*{strings.MothersBloodPressure}*/}
-                    2 测的血压
+                        
+                        style={(this.state.screenWidth != 320)?({marginRight: 15,width: 15,height: 15,alignSelf: 'center'}):({marginRight: 15,width: 15,height: 15,alignSelf: 'center'})}
+                        source={{isStatic:!this.state.devMode, uri:this.state.basePath + "porper@2x.png"}}/>
+                    {strings.UserMBloodPressure}
+                    {/* 2 测的血压 */}
                     </Text>
                 <Text style={styles.motherUnit}>mmHg</Text>
               </View>

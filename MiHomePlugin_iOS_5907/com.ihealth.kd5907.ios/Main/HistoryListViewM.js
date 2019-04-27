@@ -96,8 +96,8 @@ var HistoryListViewM = React.createClass({
             visible: true,
             modalVisible: false,
             height: 0,
-            selectEditBPDataButton: '全选',
-            deleteBPDataButton: '确定',
+            selectEditBPDataButton: strings.全选,
+            deleteBPDataButton: strings.确定,
             deleteDataArr:[],
             loaded: false,
             model: MHPluginSDK.deviceModel,
@@ -135,7 +135,7 @@ var HistoryListViewM = React.createClass({
                     dataSource : this.state.dataSourceCopy,
                     loaded     : true
                 });
-                this.setState({height: 0, deleteDataArr:[], selectEditBPDataButton:'全选'});
+                this.setState({height: 0, deleteDataArr:[], selectEditBPDataButton:strings.全选});
             }else{
                 LayoutAnimation.configureNext(customAnim.customSpring);
                 // set state
@@ -155,7 +155,7 @@ var HistoryListViewM = React.createClass({
                     dataSource : this.state.dataSourceCopy,
                     loaded     : true
                 });
-                this.setState({height: 0, deleteDataArr:[], selectEditBPDataButton:'全选'});
+                this.setState({height: 0, deleteDataArr:[], selectEditBPDataButton:strings.全选});
             }else{
                 LayoutAnimation.configureNext(customAnim.customSpring);
                 // set state
@@ -182,17 +182,41 @@ var HistoryListViewM = React.createClass({
         return date.getFullYear() + strings.nian + (date.getMonth() + 1) + strings.yue + date.getDate() + strings.ri;
     },
 
+    // formatDateHour: function(number) {
+    //     var date = new Date(number*1000);
+    //     var dateFormat = date.getHours() + ":";
+    //     if (date.getHours() < 10) {
+    //         dateFormat = "0" + date.getHours() + ":";
+    //     }
+    //     if (date.getMinutes() < 10) {
+    //         dateFormat += "0";
+    //     }
+    //     dateFormat += date.getMinutes();
+    //     return dateFormat;
+    // },
+
     formatDateHour: function(number) {
         var date = new Date(number*1000);
-        var dateFormat = date.getHours() + ":";
-        if (date.getHours() < 10) {
-            dateFormat = "0" + date.getHours() + ":";
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var timeValue = strings.PM;
+        if (hours == 24) {
+            // timeValue = strings.Night;
         }
-        if (date.getMinutes() < 10) {
-            dateFormat += "0";
+        else if (hours >= 18) {
+            timeValue = strings.Night;
+        }else if (hours >= 13)  {
+            timeValue = strings.PM;
         }
-        dateFormat += date.getMinutes();
-        return dateFormat;
+         else {
+            timeValue = strings.AM;
+        }
+        
+        timeValue += ((hours >12) ? hours -12 :hours)
+        timeValue += ((minutes < 10) ? ":0" : ":") + minutes
+        
+       return timeValue;
+        
     },
 
     // fetch data
@@ -430,7 +454,7 @@ var HistoryListViewM = React.createClass({
                          padding:10
                     }]}>
                         <Image style={{marginLeft:0, marginTop:0, width:160, height:109}} source={{uri:MHPluginSDK.basePath+'iHealthSuccess.png'}} />
-                        <Text style={{position:'absolute', top:85, color:'#666666', left:57, fontSize:16}}>删除成功</Text>
+                        <Text style={{position:'absolute', top:85, color:'#666666', left:57, fontSize:16}}>{strings.删除成功}</Text>
                     </Animated.View>
 
                 </View>
@@ -454,7 +478,7 @@ var HistoryListViewM = React.createClass({
                    width:width,
                    backgroundColor: 'rgba(111,111,111,.3)',
                    alignItems:'center',
-                   //justifyContent:'center'
+                   justifyContent:'center'
                  }}>
 
                     <Animated.View style={[{
@@ -464,7 +488,7 @@ var HistoryListViewM = React.createClass({
                          padding:10
                     }]}>
                         <Image style={{marginLeft:0, marginTop:0, width:160, height:109}} source={{uri:MHPluginSDK.basePath+'iHealthSuccess.png'}} />
-                        <Text style={{position:'absolute', top:85, color:'#666666', left:27, fontSize:16}}>删除失败请重试</Text>
+                        <Text style={{position:'absolute', top:85, color:'#666666', left:27, fontSize:16}}>{strings.删除失败请重试}</Text>
                     </Animated.View>
 
                 </View>
@@ -512,7 +536,7 @@ var HistoryListViewM = React.createClass({
                              padding:10
                           }]}>
                             <Image style={{marginLeft:0, marginTop:0, width:160, height:109}} source={{uri:MHPluginSDK.basePath+'iHealthSuccess.png'}} />
-                            <Text style={{position:'absolute', top:85, color:'#666666', left:57, fontSize:16}}>删除成功</Text>
+                            <Text style={{position:'absolute', top:85, color:'#666666', left:57, fontSize:16}}>{strings.删除成功}</Text>
                         </View>
                     </View>
                 ):(
@@ -528,7 +552,8 @@ var HistoryListViewM = React.createClass({
                        height:height,
                        width:width,
                        backgroundColor: 'rgba(111,111,111,.3)',
-                       alignItems:'center'
+                       alignItems:'center',
+                       justifyContent:"center"
                      }}>
                         <View style={[{
                          top:239,
@@ -537,7 +562,7 @@ var HistoryListViewM = React.createClass({
                          padding:10
                         }]}>
                             <Image style={{marginLeft:0, marginTop:0, width:160, height:109}} source={{uri:MHPluginSDK.basePath+'iHealthFailed.png'}} />
-                            <Text style={{position:'absolute', top:85, color:'#666666', left:33, fontSize:16}}>删除失败请重试</Text>
+                            <Text style={{color:'#666666',  fontSize:16}}>{strings.删除失败请重试}</Text>
                         </View>
                     </View>
                 ):(
@@ -549,10 +574,10 @@ var HistoryListViewM = React.createClass({
                     <View style={styles.separator} />
                     {/*删除和全选按钮*/}
                     <View style={{flexDirection:'row', flex:1}}>
-                        <TouchableWithoutFeedback style={{flex:1}} underlayColor='#838383' onPress={
+                        <TouchableWithoutFeedback style={{flex:2}} underlayColor='#838383' onPress={
                             ()=>{
-                                if(this.state.selectEditBPDataButton == '全选'){
-                                    this.setState({selectEditBPDataButton:'取消全选', deleteDataArr:[], deleteButtonColor:'rgba(255,102,51,0.5)'});
+                                if(this.state.selectEditBPDataButton == strings.全选){
+                                    this.setState({selectEditBPDataButton:strings.取消全选, deleteDataArr:[], deleteButtonColor:'rgba(255,102,51,0.5)'});
                                     //清空
                                     if(this.state.dataSource.rowIdentities.length>0){
                                         for(var n=0; n<this.state.dataSource.rowIdentities.length; n++){
@@ -577,11 +602,11 @@ var HistoryListViewM = React.createClass({
                                         deleteButtonColor:'rgba(255,102,51,1.0)'
                                     });
                                 }else{
-                                    this.setState({selectEditBPDataButton:'全选', deleteDataArr:[], deleteButtonColor:'rgba(255,102,51,0.5)'});
+                                    this.setState({selectEditBPDataButton:strings.全选, deleteDataArr:[], deleteButtonColor:'rgba(255,102,51,0.5)'});
                                 }
                             }}>
                             <View style={{flex:1, justifyContent:'center', backgroundColor:'#ffffff'}}>
-                                <Text style={{paddingLeft:15, width:100, fontSize:this.state.height-32, color:'#FF6633'}}>{this.state.selectEditBPDataButton}</Text>
+                                <Text style={{paddingLeft:15, width:120, fontSize:this.state.height-32, color:'#FF6633'}}>{this.state.selectEditBPDataButton}</Text>
                             </View>
                         </TouchableWithoutFeedback>
 
@@ -593,7 +618,7 @@ var HistoryListViewM = React.createClass({
                                 (this.state.deleteDataArr.length!=0)?this._deleteBPDataAlert():null
                             }}>
                             <View style={{justifyContent:'center', alignItems:'flex-end', flex:1, backgroundColor:'#ffffff'}}>
-                                <Text style={{paddingRight:15, width:100, textAlign:'right', fontSize:this.state.height-32, color:this.state.deleteButtonColor}}>删除</Text>
+                                <Text style={{paddingRight:15, width:100, textAlign:'right', fontSize:this.state.height-32, color:this.state.deleteButtonColor}}>{strings.删除}</Text>
                             </View>
                         </TouchableWithoutFeedback>
                     </View>
@@ -671,14 +696,27 @@ var HistoryListViewM = React.createClass({
 
     //弹出提示确定提醒是否删除数据
     _deleteBPDataAlert: function(){
-        Alert.alert(
-            '数据删除后, 将无法恢复, 确定删除?',
-            null,
-            [
-                {text: '取消', onPress: () => console.log('OK Pressed!')},
-                {text: '确定', onPress: () => {this._deleteBPData(this.state.deleteDataArr)}}
-            ]
-        )
+
+        if (strings.取消 == 'Cancle') {
+            Alert.alert(
+                'Deleting Data will not restored. Are you sure to delete the data?',
+                null,
+                [
+                    {text: 'Cancle', onPress: () => console.log('OK Pressed!')},
+                    {text: 'Yes', onPress: () => {this._deleteBPData(this.state.deleteDataArr)}}
+                ]
+            )
+            
+        } else {
+            Alert.alert(
+                '数据删除后, 将无法恢复, 确定删除?',
+                null,
+                [
+                    {text: '取消', onPress: () => console.log('OK Pressed!')},
+                    {text: '确定', onPress: () => {this._deleteBPData(this.state.deleteDataArr)}}
+                ]
+            )
+        }
     },
 
     renderSectionHeader: function(sectionData, sectionID) {
@@ -845,7 +883,7 @@ var styles = StyleSheet.create({
         justifyContent: "center",
     },
     rowTime: {
-        flex : 2,
+        flex : 2.5,
         color: '#212121',
         fontSize: 16,
         marginLeft: 5,
@@ -857,7 +895,7 @@ var styles = StyleSheet.create({
         marginLeft: 5,
     },
     rowText: {
-        flex: 3,
+        flex: 2.5,
         color: '#212121',
         fontSize: 16,
         marginLeft: 0,
@@ -907,7 +945,7 @@ var styles = StyleSheet.create({
 
 var route = {
     key: 'HistoryListViewM',
-    title: '用户2 测的血压',
+    title: strings.MothersBloodPressure,
     component: HistoryListViewM,
     renderNavRightComponent: function(route, navigator, index, navState) {
         return (
@@ -920,7 +958,7 @@ var route = {
                           DeviceEventEmitter.emit('EditBPDataListView_Edit', route);
                       }}>
 
-                    编辑
+                    {strings.编辑}
                 </Text>
             </View>
         );

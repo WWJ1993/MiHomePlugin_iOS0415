@@ -131,6 +131,7 @@ class PluginApp extends React.Component {
   componentDidMount() {
     DeviceEventEmitter.emit('willfocus', {route:this._firstPage.route()});
     DeviceEventEmitter.emit('didfocus', {route:this._firstPage.route()});
+    
   }
 
   componentWillUnmount() {

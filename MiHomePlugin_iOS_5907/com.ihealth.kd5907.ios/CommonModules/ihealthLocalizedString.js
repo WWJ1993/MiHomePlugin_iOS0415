@@ -7,24 +7,51 @@ var strings = new  LocalizedStrings({
       AboutBloodPressure:"About the blood pressure monitor",
 
       //设置页内容
+      重命名:"Rename",
+      设备共享:"Share device",
+      检查固件更新:"Check for firmware updates",
+      解除连接:"Remove device",
+      更多:"More",
+      编辑:"Edit",
+      完成:"done",
+      RevokeTheTermsOfUseAndPrivacyPolicyAuthorization:"Revoke The \"Terms Of Use And Privacy Policy\" Authorization",
+      撤销授权后设备会与您当前登陆的账号解除绑定并清除该设备之前存储在服务端的数据物理设备中存储的数据需要您进行人工本地物理重置后清除若设备支持您可以直接在设备上进行重置或参照隐私政策中的撤销授权进行重置上述数据撤销后均不可恢复若要重新使用设备需要您再次进行绑定并且重新授权
+      :'After the authorization is revoked, the device will unbind the account with the current login and clear the data stored on the server before the device; the data stored in the physical device needs to be cleared after the manual local physical reset. If the device supports it, you can directly Reset on the device or reset by referring to the revoked authorization in \"Privacy Policy\". After the data is revoked, it cannot be restored. To re-use the device, you need to bind and re-authorize again.', 
+      全选:"Select All",
+      取消全选:"Select None",
+      删除:"Delete",
+      确定:"Yes",
+      取消:"Cancle",
+      数据删除后将无法恢复确定删除:"Deleting Data will not restored. Are you sure to delete the data?",
+      删除成功:"Delete Success",
+      删除失败请重试:"Delete failed, please try again",
+      feedback:"Feedback",
+      常见问题:"FAQ",
+      Night:"Night",
+      PM:"PM",
+      AM:"AM",
+
+
+
       DearRemind:"Dear Remind",
       AccessWeChat:"Access WeChat",
-      DeviceInformation:"Device Information",
+      DeviceInformation:"Device Info",
       Help:"Help",
-      UniversalSettings:"Universal Settings",
+      UniversalSettings:"General Settings",
       AgreementAndPolicy:"Agreement And Policy",
       ServiceAgreement:"Service Agreement",
       PrivacyPolicy:"Privacy Policy",
       BootScreen:"Boot Screen",
 
       MeasurementResultsVoiceBroadcast: "Voice announcements of the results",
-      BatteryPower:"Battery level",
-      SerialNumber:"Serial NO",
-      FirmwareVersion:"Version of the firmwares",
-      PluginVersion:"Version of the plug-in",
+      BatteryPower:"Battery Level",
+      SerialNumber:"Serial NO.",
+      FirmwareVersion:"Version Of The Firmwares",
+      PluginVersion:"Plugin Version",
 
-      BPUsingInstructions:"BP Using Instructions",
-      BPFaq:"BP FAQ",
+      BPUsingInstructions:"Instructions",
+    
+     
 
       WhenTheBloodPressureMonitorOn:"BP monitor online, you will receive message",
       MON:"MON",
@@ -37,26 +64,29 @@ var strings = new  LocalizedStrings({
       MomAndDadRemind:"Mom and Dad, remember to stick to the blood pressure!",
 
       iHealthBloodPressureMonitor:" iHealth BP Monitor",
-      ShareWeChat:"Share blood pressure to WeChat's two-dimensional code to relatives and friends, to facilitate real-time attention to your friends and relatives of blood pressure changes!",
+      ShareWeChat:"Share blood pressure to WeChat's the two-dimensional code to relatives and friends, to facilitate real-time attention to your friends and relatives of blood pressure changes!",
       SharetoWeChatfriends:"Share WeChat",
 
       Setting:"Setting",
 
       //主页面
-      DadsBloodPressure:"User1 blood pressure",
-      MothersBloodPressure:"User blood pressure",
+      UserFBloodPressure:"1 Blood Pressure",
+      DadsBloodPressure:"User1 Blood Pressure",
+      UserMBloodPressure:"2 Blood Pressure",
+      MothersBloodPressure:"User2 Blood Pressure",
       Findmore:"Find More",
       ResultsOfNormalBloodPressure:"Normal BP results(times)",
       HighBloodPressureResults:"High BP results(times)",
       HighVoltageHighestValue:"High BP Maximum",
       LowVoltageHighestValue:"Low BP Maximum",
       BloodPressureMean:"Average BP",
-      MeanValueOfPulsePressure:"Average pressure",
-      Normal:" Normal ",
-      High:" High ",
-      Low:" Low ",
+      MeanValueOfPulsePressure:"Average pulse",
+      Normal:"Normal",
+      High:"High",
+      Low:"Low",
+      Mmhg:"(mmHg)",
       BloodPressureOutcomeDetails:"Detail Results",
-      AccordingToWHO:"The WHO blood pressure standards your result is:",
+      AccordingToWHO:"According to the WHO World Health Organization blood pressure standard, your assessment is:",
       SevereHypertension:"Severe hypertension",
       ModerateHypertension:"Moderate Hypertension",
       MildHypertension:"Mild hypertension",
@@ -68,11 +98,11 @@ var strings = new  LocalizedStrings({
       HeartRate:"HR",
       TimesPerMinute:"Times/Min",
       InterpretationOfBloodPressureResults:"Blood pressure results interpretation",
-      HowDoYouFeelBeforeYouMeasure:"[mood]:How do you feel before the measurement?",
+      HowDoYouFeelBeforeYouMeasure:"[Mood]:How do you feel before the measurement?",
       Good:"Good",
       Commonly:"General",
       Bad:"Bad",
-      TakingAntihypertensiveDrugsWithin2Hours:"[medication]:Did you take the antihypertensive drug within 2 hours?",
+      TakingAntihypertensiveDrugsWithin2Hours:"[Medication]:Have you take the antihypertensive drug within 2 hours?",
       Yes:"Yes",
       No:"No",
       LoadLatestMeasurementRecord:"Loading the latest measurement record",
@@ -83,13 +113,39 @@ var strings = new  LocalizedStrings({
       yue:"/",
       ri:"",
     },
-    "zh-Hans-CN":{
+    "zh-Hans":{
       //简体中文 iOS9+
       //无用
       OpenAJK:"打开爱家康",
       AboutBloodPressure:"关于血压计",
 
       //设置页内容
+      重命名:"重命名",
+      设备共享:"设备共享",
+      检查固件更新:"检查固件更新",
+      解除连接:"删除设备",
+      更多:"更多",
+      编辑:"编辑",
+      完成:"完成",
+      RevokeTheTermsOfUseAndPrivacyPolicyAuthorization:"撤销\"使用条款和隐私政策\"授权",
+      撤销授权后设备会与您当前登陆的账号解除绑定并清除该设备之前存储在服务端的数据物理设备中存储的数据需要您进行人工本地物理重置后清除若设备支持您可以直接在设备上进行重置或参照隐私政策中的撤销授权进行重置上述数据撤销后均不可恢复若要重新使用设备需要您再次进行绑定并且重新授权
+      :"撤销授权后，设备会与您当前登录的账号解除绑定并清除该设备之前存储在服务端的数据；物理设备中存储的数据需要您进行人工本地物理重置后清除，若设备支持，您可以直接在设备上进行重置或参照\"隐私政策\"中的撤销授权进行重置，上述数据撤销后均不可恢复，若要重新使用设备，需要您再次进行绑定并且重新授权", 
+
+      全选:"全选",
+      取消全选:"全不选",
+      删除:"删除",
+      确定:"确定",
+      取消:"取消",
+      数据删除后将无法恢复确定删除:"数据删除后, 将无法恢复, 确定删除?",
+      删除成功:"删除成功",
+      删除失败请重试:"删除失败请重试",
+      feedback:"反馈",
+      常见问题:"常见问题",
+      Night:"晚上",
+      PM:"下午",
+      AM:"上午",
+      
+
       DearRemind:"宝贝提醒",
       AccessWeChat:"接入微信",
       DeviceInformation:"设备信息",
@@ -107,7 +163,8 @@ var strings = new  LocalizedStrings({
       PluginVersion:"插件版本",
 
       BPUsingInstructions:"使用说明",
-      BPFaq:"常见问题",
+    
+      
 
       WhenTheBloodPressureMonitorOn:"当血压计开机时，将收到默认留言",
       MON:"周一",
@@ -126,8 +183,10 @@ var strings = new  LocalizedStrings({
       Setting:"设置",
 
       //主页面
-      DadsBloodPressure:"用户1 测的血压",
-      MothersBloodPressure:"用户2 测的血压",
+      DadsBloodPressure:"用户1 血压记录",
+      MothersBloodPressure:"用户2 血压记录",
+      UserFBloodPressure:"1 血压记录",
+      UserMBloodPressure:"2 血压记录",
       Findmore:"发现更多",
       ResultsOfNormalBloodPressure:"正常血压结果(次)",
       HighBloodPressureResults:"偏高血压结果(次)",
@@ -138,6 +197,7 @@ var strings = new  LocalizedStrings({
       Normal:" 正常 ",
       High:" 偏高 ",
       Low:" 偏低 ",
+      Mmhg:"",
       BloodPressureOutcomeDetails:"血压结果详情",
       AccordingToWHO:"根据WHO世界卫生组织血压标准评定您本次测量为：",
       SevereHypertension:"重度高血压",
@@ -166,13 +226,24 @@ var strings = new  LocalizedStrings({
       yue:"月",
       ri:"日",
     },
-    "zh-Hant-CN":{
+    "zh-Hant":{
       //繁体中文 iOS9+
       //无用
       OpenAJK:"打開愛家康",
       AboutBloodPressure:"关于血压计",
 
       //设置页内容
+      重命名:"重命名",
+      设备共享:"设备共享",
+      检查固件更新:"检查固件更新",
+      解除连接:"删除设备",
+      更多:"更多",
+      编辑:"编辑",
+      完成:"完成",
+      RevokeTheTermsOfUseAndPrivacyPolicyAuthorization:"撤销\"使用条款和隐私政策\"授权",
+      feedback:"反馈",
+
+
       DearRemind:"寶貝提醒",
       AccessWeChat:"接入微信",
       DeviceInformation:"设备信息",
@@ -211,6 +282,8 @@ var strings = new  LocalizedStrings({
       //主页面
       DadsBloodPressure:"用戶1 測的血壓",
       MothersBloodPressure:"用戶2 測的血壓",
+      UserFBloodPressure:"1 測的血壓",
+      UserMBloodPressure:"2 測的血壓",
       Findmore:"發現更多",
       ResultsOfNormalBloodPressure:"正常血壓結果(次)",
       HighBloodPressureResults:"偏高血壓結果(次)",
@@ -249,88 +322,7 @@ var strings = new  LocalizedStrings({
       yue:"月",
       ri:"日",
     },
-    "zh-Hans":{
-      //简体中文 iOS7,8
-      //无用
-      OpenAJK:"打开爱家康",
-      AboutBloodPressure:"关于血压计",
-
-      //设置页内容
-      DearRemind:"宝贝提醒",
-      AccessWeChat:"接入微信",
-      DeviceInformation:"设备信息",
-      Help:"帮助",
-      UniversalSettings:"通用设置",
-      BootScreen:"血压计开机画面",
-      AgreementAndPolicy:"服务协议和隐私政策",
-      ServiceAgreement:"服务协议",
-      PrivacyPolicy:"隐私政策",
-      MeasurementResultsVoiceBroadcast: "测量结果语音播报",
-      BatteryPower:"电池电量",
-      SerialNumber:"序列号",
-      FirmwareVersion:"固件版本号",
-      PluginVersion:"插件版本",
-
-      BPUsingInstructions:"使用说明",
-      BPFaq:"常见问题",
-
-      WhenTheBloodPressureMonitorOn:"当血压计开机时，将收到默认留言",
-      MON:"周一",
-      TUE:"周二",
-      WED:"周三",
-      THU:"周四",
-      FRI:"周五",
-      SAT:"周六",
-      SUN:"周日",
-      MomAndDadRemind:"爸爸妈妈，记得坚持测血压!",
-
-      iHealthBloodPressureMonitor:" iHealth智控血压",
-      ShareWeChat:"分享血压计二维码给微信亲友，方便亲友实时关注您的血压变化",
-      SharetoWeChatfriends:"分享至微信好友",
-
-      Setting:"设置",
-
-      //主页面
-      DadsBloodPressure:"用户1 测的血压",
-      MothersBloodPressure:"用户2 测的血压",
-      Findmore:"发现更多",
-      ResultsOfNormalBloodPressure:"正常血压结果(次)",
-      HighBloodPressureResults:"偏高血压结果(次)",
-      HighVoltageHighestValue:"高压最高值(mmHg)",
-      LowVoltageHighestValue:"低压最高值(mmHg)",
-      BloodPressureMean:"血压平均值(mmHg)",
-      MeanValueOfPulsePressure:"脉压平均值(mmHg)",
-      Normal:" 正常 ",
-      High:" 偏高 ",
-      Low:" 偏低 ",
-      BloodPressureOutcomeDetails:"血压结果详情",
-      AccordingToWHO:"根据WHO世界卫生组织血压标准评定您本次测量为：",
-      SevereHypertension:"重度高血压",
-      ModerateHypertension:"中度高血压",
-      MildHypertension:"轻度高血压",
-      NormalPartialHypertension:"正常偏高血压",
-      NormalBloodPressure:"正常血压",
-      IdealBloodPressure:"理想血压",
-      HighPressure:"高压",
-      LowPressure:"低压",
-      HeartRate:"心率",
-      TimesPerMinute:"次/分钟",
-      InterpretationOfBloodPressureResults:"血压结果解读",
-      HowDoYouFeelBeforeYouMeasure:"【心情】:测量前的心情感觉如何？",
-      Good:"好",
-      Commonly:"一般",
-      Bad:"不好",
-      TakingAntihypertensiveDrugsWithin2Hours:"【服药】:2小时内服用过降压药吗？",
-      Yes:"有",
-      No:"没有",
-      LoadLatestMeasurementRecord:"加载最新测量记录",
-      LoadingHistoryRecord:"加载历史测量记录",
-      Loading:"加载中",
-
-      nian:"年",
-      yue:"月",
-      ri:"日",
-    },
+  
     "zh-Hant":{
       //繁体中文 iOS7,8
       //无用
@@ -338,6 +330,17 @@ var strings = new  LocalizedStrings({
       AboutBloodPressure:"关于血压计",
 
       //设置页内容
+      重命名:"重命名",
+      设备共享:"设备共享",
+      检查固件更新:"检查固件更新",
+      解除连接:"删除设备",
+      更多:"更多",
+      编辑:"编辑",
+      完成:"完成",
+      RevokeTheTermsOfUseAndPrivacyPolicyAuthorization:"撤销\"使用条款和隐私政策\"授权",
+      feedback:"反馈",
+
+
       DearRemind:"寶貝提醒",
       AccessWeChat:"接入微信",
       DeviceInformation:"设备信息",
@@ -375,6 +378,8 @@ var strings = new  LocalizedStrings({
       //主页面
       DadsBloodPressure:"用戶1 測的血壓",
       MothersBloodPressure:"用戶2 測的血壓",
+      UserFBloodPressure:"1 測的血壓",
+      UserMBloodPressure:"2 測的血壓",
       Findmore:"發現更多",
       ResultsOfNormalBloodPressure:"正常血壓結果(次)",
       HighBloodPressureResults:"偏高血壓結果(次)",
@@ -420,6 +425,17 @@ var strings = new  LocalizedStrings({
       AboutBloodPressure:"关于血压计",
 
       //设置页内容
+      重命名:"重命名",
+      设备共享:"设备共享",
+      检查固件更新:"检查固件更新",
+      解除连接:"删除设备",
+      更多:"更多",
+      编辑:"编辑",
+      完成:"完成",
+      RevokeTheTermsOfUseAndPrivacyPolicyAuthorization:"撤销\"使用条款和隐私政策\"授权",
+      feedback:"反馈",
+
+
       DearRemind:"寶貝提醒",
       AccessWeChat:"接入微信",
       DeviceInformation:"设备信息",
@@ -457,6 +473,8 @@ var strings = new  LocalizedStrings({
       //主页面
       DadsBloodPressure:"用戶1 測的血壓",
       MothersBloodPressure:"用戶2 測的血壓",
+      UserFBloodPressure:"1 測的血壓",
+      UserMBloodPressure:"2 測的血壓",
       Findmore:"發現更多",
       ResultsOfNormalBloodPressure:"正常血壓結果(次)",
       HighBloodPressureResults:"偏高血壓結果(次)",
@@ -502,6 +520,17 @@ var strings = new  LocalizedStrings({
       AboutBloodPressure:"关于血压计",
 
       //设置页内容
+      重命名:"重命名",
+      设备共享:"设备共享",
+      检查固件更新:"检查固件更新",
+      解除连接:"删除设备",
+      更多:"更多",
+      编辑:"编辑",
+      完成:"完成",
+      RevokeTheTermsOfUseAndPrivacyPolicyAuthorization:"撤销\"使用条款和隐私政策\"授权",
+      feedback:"反馈",
+
+
       DearRemind:"寶貝提醒",
       AccessWeChat:"接入微信",
       DeviceInformation:"设备信息",
@@ -540,6 +569,8 @@ var strings = new  LocalizedStrings({
       //主页面
       DadsBloodPressure:"用戶1 測的血壓",
       MothersBloodPressure:"用戶2 測的血壓",
+      UserFBloodPressure:"1 測的血壓",
+      UserMBloodPressure:"2 測的血壓",
       Findmore:"發現更多",
       ResultsOfNormalBloodPressure:"正常血壓結果(次)",
       HighBloodPressureResults:"偏高血壓結果(次)",

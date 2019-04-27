@@ -653,104 +653,206 @@ var SceneMain = React.createClass({
 
   },
   render: function() {
-    return (
-      //ScrollView布局
-        <View style={{flex:1}}>
-          <StatusBar barStyle='default' />
-          <View style={{marginTop:64, height:0.5, width:width, backgroundColor: '#d0d0d0'}}>
-          </View>
-          <ScrollView automaticallyAdjustContentInsets={false} contentContainerStyle={(this.state.screenWidth != 320)?({backgroundColor: '#f8f8f8',flexDirection: 'column',height: 1200,marginLeft: 0,marginRight: 0, marginTop: 0}):({backgroundColor: '#f8f8f8',flexDirection: 'column',height: 1000,marginLeft: 0,marginRight: 0, marginTop: 0})}>
-            {this.bpLevelViewItch()}
-            <View style={styles.imageView}>
-              <Image style={styles.image} source={{isStatic:!this.state.devMode, uri:this.state.bpLevelimagePath}}/>
+    if (strings.BloodPressureOutcomeDetails == '血压结果详情') {
+      return (
+        //ScrollView布局
+          <View style={{flex:1}}>
+            <StatusBar barStyle='default' />
+            <View style={{marginTop:64, height:0.5, width:width, backgroundColor: '#d0d0d0'}}>
             </View>
-
-            <View style={{flex: (deviceWidth > 414)?35:40, backgroundColor: '#ffffff', flexDirection: 'column'}}>
-              <View style={styles.bpDataViewStyle}>
-                {this.showView()}
-                <View style={styles.separator}/>
-                <View style={{flex: (deviceWidth > 414)?2:3, backgroundColor: '#ffffff', flexDirection: 'row'}}>
-                  <View style={styles.containerText}>
-                    <Text style={(this.state.screenWidth != 320)?({lineHeight: 30,fontSize: 20,color: '#555555'}):({lineHeight: 22,fontSize: 17,color: '#555555'})}>
-                      {'【解读】:' + this.state.ResultNote}
-                    </Text>
+            <ScrollView automaticallyAdjustContentInsets={false} contentContainerStyle={(this.state.screenWidth != 320)?({backgroundColor: '#f8f8f8',flexDirection: 'column',height: 1200,marginLeft: 0,marginRight: 0, marginTop: 0}):({backgroundColor: '#f8f8f8',flexDirection: 'column',height: 1000,marginLeft: 0,marginRight: 0, marginTop: 0})}>
+              {this.bpLevelViewItch()}
+              <View style={styles.imageView}>
+                <Image style={styles.image} source={{isStatic:!this.state.devMode, uri:this.state.bpLevelimagePath}}/>
+              </View>
+  
+              <View style={{flex: (deviceWidth > 414)?35:40, backgroundColor: '#ffffff', flexDirection: 'column'}}>
+                <View style={styles.bpDataViewStyle}>
+                  {this.showView()}
+                  <View style={styles.separator}/>
+                  <View style={{flex: (deviceWidth > 414)?2:3, backgroundColor: '#ffffff', flexDirection: 'row'}}>
+                    <View style={styles.containerText}>
+                      <Text style={(this.state.screenWidth != 320)?({lineHeight: 30,fontSize: 20,color: '#555555'}):({lineHeight: 22,fontSize: 17,color: '#555555'})}>
+                        {'【解读】:' + this.state.ResultNote}
+                      </Text>
+                    </View>
                   </View>
+  
                 </View>
-
               </View>
-            </View>
-            <View style={styles.separator}/>
-
-            <View style={styles.darkView}>
-            </View>
-            <View style={styles.separator}/>
-
-            <View style={styles.userMoodView}>
-              <View style={styles.containerText}>
-                <Text style={(this.state.screenWidth != 320)?({lineHeight: 30,fontSize: 20,color: '#555555'}):({lineHeight: 25,fontSize: 17,color: '#555555'})}>
-                  {strings.HowDoYouFeelBeforeYouMeasure}
-                </Text>
+              <View style={styles.separator}/>
+  
+              <View style={styles.darkView}>
               </View>
-
-              <View style={styles.selectMoodContainer}>
-                <TouchableWithoutFeedback style={styles.rowContainer} underlayColor='#838383' onPress={this.switchMood('HelloDeveloper', "好心情").bind(this)}>
-                  <View style={styles.selectMoodGood}>
-                    <Image style={styles.selectMoodGoodImage} source={{isStatic:!this.state.devMode, uri:this.state.goodimagePath}}/>
-                    <Text style={[styles.selectMoodGoodText, {color:(this.state.goodState==true)?'#FF6633':'#555555'}]}>{strings.Good}</Text>
-                  </View>
-                </TouchableWithoutFeedback>
-
-                <TouchableWithoutFeedback style={styles.rowContainer} underlayColor='#838383' onPress={this.switchMood('HelloDeveloper', "一般心情").bind(this)}>
-                  <View style={styles.selectMoodNormal}>
-                    <Image style={styles.selectMoodNormalImage} source={{isStatic:!this.state.devMode, uri:this.state.normalimagePath}}/>
-                    <Text style={[styles.selectMoodNormalText, {color:(this.state.normalState==true)?'#FF6633':'#555555'}]}>{strings.Commonly}</Text>
-                  </View>
-                </TouchableWithoutFeedback>
-
-                <TouchableWithoutFeedback style={styles.rowContainer} underlayColor='#838383' onPress={this.switchMood('HelloDeveloper', "坏心情").bind(this)}>
-                  <View style={styles.selectMoodBad}>
-                    <Image style={styles.selectMoodBadImage} source={{isStatic:!this.state.devMode, uri:this.state.badimagePath}}/>
-                    <Text style={[styles.selectMooBadText, {color:(this.state.badState==true)?'#FF6633':'#555555'}]}>{strings.Bad}</Text>
-                  </View>
-                </TouchableWithoutFeedback>
+              <View style={styles.separator}/>
+  
+              <View style={styles.userMoodView}>
+                <View style={styles.containerText}>
+                  <Text style={(this.state.screenWidth != 320)?({lineHeight: 30,fontSize: 20,color: '#555555'}):({lineHeight: 25,fontSize: 17,color: '#555555'})}>
+                    {strings.HowDoYouFeelBeforeYouMeasure}
+                  </Text>
+                </View>
+  
+                <View style={styles.selectMoodContainer}>
+                  <TouchableWithoutFeedback style={styles.rowContainer} underlayColor='#838383' onPress={this.switchMood('HelloDeveloper', "好心情").bind(this)}>
+                    <View style={styles.selectMoodGood}>
+                      <Image style={styles.selectMoodGoodImage} source={{isStatic:!this.state.devMode, uri:this.state.goodimagePath}}/>
+                      <Text style={[styles.selectMoodGoodText, {color:(this.state.goodState==true)?'#FF6633':'#555555'}]}>{strings.Good}</Text>
+                    </View>
+                  </TouchableWithoutFeedback>
+  
+                  <TouchableWithoutFeedback style={styles.rowContainer} underlayColor='#838383' onPress={this.switchMood('HelloDeveloper', "一般心情").bind(this)}>
+                    <View style={styles.selectMoodNormal}>
+                      <Image style={styles.selectMoodNormalImage} source={{isStatic:!this.state.devMode, uri:this.state.normalimagePath}}/>
+                      <Text style={[styles.selectMoodNormalText, {color:(this.state.normalState==true)?'#FF6633':'#555555'}]}>{strings.Commonly}</Text>
+                    </View>
+                  </TouchableWithoutFeedback>
+  
+                  <TouchableWithoutFeedback style={styles.rowContainer} underlayColor='#838383' onPress={this.switchMood('HelloDeveloper', "坏心情").bind(this)}>
+                    <View style={styles.selectMoodBad}>
+                      <Image style={styles.selectMoodBadImage} source={{isStatic:!this.state.devMode, uri:this.state.badimagePath}}/>
+                      <Text style={[styles.selectMooBadText, {color:(this.state.badState==true)?'#FF6633':'#555555'}]}>{strings.Bad}</Text>
+                    </View>
+                  </TouchableWithoutFeedback>
+                </View>
               </View>
-            </View>
-            <View style={styles.separator}/>
-
-            <View style={styles.darkView}>
-            </View>
-
-            <View style={styles.separator}/>
-
-            <View style={styles.takeMedicineView}>
-              <View style={styles.containerText}>
-                <Text style={(this.state.screenWidth != 320)?({lineHeight: 30,fontSize: 20,color: '#555555'}):({lineHeight: 25,fontSize: 17,color: '#555555'})}>
-                  {strings.TakingAntihypertensiveDrugsWithin2Hours}
-                </Text>
+              <View style={styles.separator}/>
+  
+              <View style={styles.darkView}>
               </View>
-              <View style={styles.takeMedicineContainer}>
-                <TouchableWithoutFeedback style={styles.rowContainer} underlayColor='#838383' onPress={this.takeMedicineSelect('HelloDeveloper', "已服药").bind(this)}>
-                  <View style={styles.takeMedicineYES}>
-                    <Image style={styles.takeMedicineYESImage} source={{isStatic:!this.state.devMode, uri:this.state.haveimagePath}}/>
-                    <Text style={[styles.takeMedicineYESText, {color: (this.state.haveState==true)?'#FF6633':'#555555'}]}>{strings.Yes}</Text>
-                  </View>
-                </TouchableWithoutFeedback>
-
-                <TouchableWithoutFeedback style={styles.rowContainer} underlayColor='#838383' onPress={this.takeMedicineSelect('HelloDeveloper', "未服药").bind(this)}>
-                  <View style={styles.takeMedicineNO}>
-                    <Image style={styles.takeMedicineNOImage} source={{isStatic:!this.state.devMode, uri:this.state.nothingimagePath}}/>
-                    <Text style={[styles.takeMedicineNOText,  {color: (this.state.nothingState==true)?'#FF6633':'#555555'}]}>{strings.No}</Text>
-                  </View>
-                </TouchableWithoutFeedback>
+  
+              <View style={styles.separator}/>
+  
+              <View style={styles.takeMedicineView}>
+                <View style={styles.containerText}>
+                  <Text style={(this.state.screenWidth != 320)?({lineHeight: 30,fontSize: 20,color: '#555555'}):({lineHeight: 25,fontSize: 17,color: '#555555'})}>
+                    {strings.TakingAntihypertensiveDrugsWithin2Hours}
+                  </Text>
+                </View>
+                <View style={styles.takeMedicineContainer}>
+                  <TouchableWithoutFeedback style={styles.rowContainer} underlayColor='#838383' onPress={this.takeMedicineSelect('HelloDeveloper', "已服药").bind(this)}>
+                    <View style={styles.takeMedicineYES}>
+                      <Image style={styles.takeMedicineYESImage} source={{isStatic:!this.state.devMode, uri:this.state.haveimagePath}}/>
+                      <Text style={[styles.takeMedicineYESText, {color: (this.state.haveState==true)?'#FF6633':'#555555'}]}>{strings.Yes}</Text>
+                    </View>
+                  </TouchableWithoutFeedback>
+  
+                  <TouchableWithoutFeedback style={styles.rowContainer} underlayColor='#838383' onPress={this.takeMedicineSelect('HelloDeveloper', "未服药").bind(this)}>
+                    <View style={styles.takeMedicineNO}>
+                      <Image style={styles.takeMedicineNOImage} source={{isStatic:!this.state.devMode, uri:this.state.nothingimagePath}}/>
+                      <Text style={[styles.takeMedicineNOText,  {color: (this.state.nothingState==true)?'#FF6633':'#555555'}]}>{strings.No}</Text>
+                    </View>
+                  </TouchableWithoutFeedback>
+                </View>
               </View>
+  
+              <View style={styles.separator}/>
+              <View style={styles.darkView}>
+              </View>
+            </ScrollView>
+          </View>
+      );
+    }else if (strings.BloodPressureOutcomeDetails == 'Detail Results') {
+      return (
+        //ScrollView布局
+          <View style={{flex:1}}>
+            <StatusBar barStyle='default' />
+            <View style={{marginTop:64, height:0.5, width:width, backgroundColor: '#d0d0d0'}}>
             </View>
-
-            <View style={styles.separator}/>
-            <View style={styles.darkView}>
-            </View>
-          </ScrollView>
-        </View>
-    );
+            <ScrollView automaticallyAdjustContentInsets={false} contentContainerStyle={(this.state.screenWidth != 320)?({backgroundColor: '#f8f8f8',flexDirection: 'column',height: 1200,marginLeft: 0,marginRight: 0, marginTop: 0}):({backgroundColor: '#f8f8f8',flexDirection: 'column',height: 1000,marginLeft: 0,marginRight: 0, marginTop: 0})}>
+              {this.bpLevelViewItch()}
+              <View style={styles.imageView}>
+                <Image style={styles.image} source={{isStatic:!this.state.devMode, uri:this.state.bpLevelimagePath}}/>
+              </View>
+  
+              <View style={{flex: (deviceWidth > 414)?35:40, backgroundColor: '#ffffff', flexDirection: 'column'}}>
+                <View style={styles.bpDataViewStyle}>
+                  {this.showView()}
+                  <View style={styles.separator}/>
+                  {/* <View style={{flex: (deviceWidth > 414)?2:3, backgroundColor: '#ffffff', flexDirection: 'row'}}>
+                    <View style={styles.containerText}>
+                      <Text style={(this.state.screenWidth != 320)?({lineHeight: 30,fontSize: 20,color: '#555555'}):({lineHeight: 22,fontSize: 17,color: '#555555'})}>
+                        {'【解读】:' + this.state.ResultNote}
+                      </Text>
+                    </View>
+                  </View> */}
+  
+                </View>
+              </View>
+              <View style={styles.separator}/>
+  
+              <View style={styles.darkView}>
+              </View>
+              <View style={styles.separator}/>
+  
+              <View style={styles.userMoodView}>
+                <View style={styles.containerText}>
+                  <Text style={(this.state.screenWidth != 320)?({lineHeight: 30,fontSize: 20,color: '#555555'}):({lineHeight: 25,fontSize: 17,color: '#555555'})}>
+                    {strings.HowDoYouFeelBeforeYouMeasure}
+                  </Text>
+                </View>
+  
+                <View style={styles.selectMoodContainer}>
+                  <TouchableWithoutFeedback style={styles.rowContainer} underlayColor='#838383' onPress={this.switchMood('HelloDeveloper', "好心情").bind(this)}>
+                    <View style={styles.selectMoodGood}>
+                      <Image style={styles.selectMoodGoodImage} source={{isStatic:!this.state.devMode, uri:this.state.goodimagePath}}/>
+                      <Text style={[styles.selectMoodGoodText, {color:(this.state.goodState==true)?'#FF6633':'#555555'}]}>{strings.Good}</Text>
+                    </View>
+                  </TouchableWithoutFeedback>
+  
+                  <TouchableWithoutFeedback style={styles.rowContainer} underlayColor='#838383' onPress={this.switchMood('HelloDeveloper', "一般心情").bind(this)}>
+                    <View style={styles.selectMoodNormal}>
+                      <Image style={styles.selectMoodNormalImage} source={{isStatic:!this.state.devMode, uri:this.state.normalimagePath}}/>
+                      <Text style={[styles.selectMoodNormalText, {color:(this.state.normalState==true)?'#FF6633':'#555555'}]}>{strings.Commonly}</Text>
+                    </View>
+                  </TouchableWithoutFeedback>
+  
+                  <TouchableWithoutFeedback style={styles.rowContainer} underlayColor='#838383' onPress={this.switchMood('HelloDeveloper', "坏心情").bind(this)}>
+                    <View style={styles.selectMoodBad}>
+                      <Image style={styles.selectMoodBadImage} source={{isStatic:!this.state.devMode, uri:this.state.badimagePath}}/>
+                      <Text style={[styles.selectMooBadText, {color:(this.state.badState==true)?'#FF6633':'#555555'}]}>{strings.Bad}</Text>
+                    </View>
+                  </TouchableWithoutFeedback>
+                </View>
+              </View>
+              <View style={styles.separator}/>
+  
+              <View style={styles.darkView}>
+              </View>
+  
+              <View style={styles.separator}/>
+  
+              <View style={styles.takeMedicineView}>
+                <View style={styles.containerText}>
+                  <Text style={(this.state.screenWidth != 320)?({lineHeight: 30,fontSize: 20,color: '#555555'}):({lineHeight: 25,fontSize: 17,color: '#555555'})}>
+                    {strings.TakingAntihypertensiveDrugsWithin2Hours}
+                  </Text>
+                </View>
+                <View style={styles.takeMedicineContainer}>
+                  <TouchableWithoutFeedback style={styles.rowContainer} underlayColor='#838383' onPress={this.takeMedicineSelect('HelloDeveloper', "已服药").bind(this)}>
+                    <View style={styles.takeMedicineYES}>
+                      <Image style={styles.takeMedicineYESImage} source={{isStatic:!this.state.devMode, uri:this.state.haveimagePath}}/>
+                      <Text style={[styles.takeMedicineYESText, {color: (this.state.haveState==true)?'#FF6633':'#555555'}]}>{strings.Yes}</Text>
+                    </View>
+                  </TouchableWithoutFeedback>
+  
+                  <TouchableWithoutFeedback style={styles.rowContainer} underlayColor='#838383' onPress={this.takeMedicineSelect('HelloDeveloper', "未服药").bind(this)}>
+                    <View style={styles.takeMedicineNO}>
+                      <Image style={styles.takeMedicineNOImage} source={{isStatic:!this.state.devMode, uri:this.state.nothingimagePath}}/>
+                      <Text style={[styles.takeMedicineNOText,  {color: (this.state.nothingState==true)?'#FF6633':'#555555'}]}>{strings.No}</Text>
+                    </View>
+                  </TouchableWithoutFeedback>
+                </View>
+              </View>
+  
+              <View style={styles.separator}/>
+              <View style={styles.darkView}>
+              </View>
+            </ScrollView>
+          </View>
+      );
+    }
+    
   },
   //上传心情和服药修改信息
   uploadMoodAndMedicineInfo(mood, medicine, changeType, subPageTitle) {

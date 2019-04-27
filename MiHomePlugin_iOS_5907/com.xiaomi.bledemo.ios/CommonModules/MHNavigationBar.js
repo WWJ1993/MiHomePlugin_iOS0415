@@ -169,6 +169,8 @@ var MHNavigationBar = React.createClass({
     var components = navState.routeStack.map((route, index) => {
       if (index == navState.routeStack.length-1)
       {
+        console.log(index);
+        console.log('11111111');
         return COMPONENT_NAMES.map(componentName =>
           this._getComponent(componentName, route, index)
         )

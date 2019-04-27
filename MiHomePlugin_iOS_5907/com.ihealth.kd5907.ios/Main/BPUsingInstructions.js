@@ -20,19 +20,41 @@ var MHPluginSDK = require('NativeModules').MHPluginSDK;
 var BPUsingInstructions = React.createClass({
 
     getInitialState: function() {
+       
+        console.log('----------strings.BPUsingInstructions--------',strings.BPUsingInstructions);
+        
+        if (strings.BPUsingInstructions == '使用说明') {
+            
+            return {
+                did: MHPluginSDK.deviceId,
+                model: MHPluginSDK.deviceModel,
+                apiLevel: MHPluginSDK.apiLevel,
+                basePath: MHPluginSDK.basePath,
+                devMode: MHPluginSDK.devMode,
+                // bpHelpImage: MHPluginSDK.basePath + 'ihealthBPHelp.png',
+                bpHelpImage: MHPluginSDK.basePath + 'use_introduceCh.png',
+                screenHeight: Dimensions.get('window').height,
+                screenWidth: Dimensions.get('window').width,
+                status: false
+            };
+            
+        }
+         else if (strings.BPUsingInstructions == 'Instructions'){
+            return {
+                did: MHPluginSDK.deviceId,
+                model: MHPluginSDK.deviceModel,
+                apiLevel: MHPluginSDK.apiLevel,
+                basePath: MHPluginSDK.basePath,
+                devMode: MHPluginSDK.devMode,
+                // bpHelpImage: MHPluginSDK.basePath + 'ihealthBPHelp.png',
+                bpHelpImage: MHPluginSDK.basePath + 'use_introduce_en.png',
+                screenHeight: Dimensions.get('window').height,
+                screenWidth: Dimensions.get('window').width,
+                status: false
+            };
+        }
 
-        return {
-            did: MHPluginSDK.deviceId,
-            model: MHPluginSDK.deviceModel,
-            apiLevel: MHPluginSDK.apiLevel,
-            basePath: MHPluginSDK.basePath,
-            devMode: MHPluginSDK.devMode,
-            // bpHelpImage: MHPluginSDK.basePath + 'ihealthBPHelp.png',
-            bpHelpImage: MHPluginSDK.basePath + 'WechatIMG4.png',
-            screenHeight: Dimensions.get('window').height,
-            screenWidth: Dimensions.get('window').width,
-            status: false
-        };
+       
     },
     render() {
         ihealth.log("render", "进入帮助页面了");
@@ -59,7 +81,7 @@ var styles = StyleSheet.create({
 
 var route = {
     key: 'BPUsingInstructions',
-    title: '使用说明',
+    title:strings.BPUsingInstructions,
     component: BPUsingInstructions,
     renderNavRightComponent: function(route, navigator, index, navState) {
         return (<View />);

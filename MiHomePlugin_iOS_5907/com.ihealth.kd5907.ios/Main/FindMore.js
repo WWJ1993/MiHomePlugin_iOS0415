@@ -46,6 +46,7 @@ var deviceHeight = 0;
 var chartContainerHeight = 0;
 var yAxisHeight= 0;
 var xAxisWidth = 0;
+var ada = 123;
 var data = {};
 var highPMarginalValue = 139, //高压临界值
     lowPMarginalValue = 89, //低压临界值
@@ -148,8 +149,7 @@ class FindMore extends Component{
                 </View>
 
                 <View style={styles.separator}/>
-                <View style={styles.darkView}>
-                </View>
+                <View style={styles.darkView}/>
 
                 <View style={styles.separator}/>
                 {this.showViewwithTheInch()}
@@ -195,9 +195,19 @@ class FindMore extends Component{
                                 <Text style={styles.bpMeasurementResultHighValueTitle}>
                                     {strings.HighVoltageHighestValue + " "}
                                     <Text style={{color:'#fff', fontSize: 12, fontWeight: 'bold', backgroundColor: this.renderIsNormal(data.mostHighHistory, highPMarginalValue)?'#97CA78':'#DF5C5F'}}>
-                                        {this.renderIsNormal(data.mostHighHistory, highPMarginalValue)?strings.Normal:strings.High}
+                                        {this.renderIsNormal(data.mostHighHistory, highPMarginalValue)?strings.Normal+ " ":strings.High+ "\n"}
+                                        
                                     </Text>
+
                                 </Text>
+                                <View style={{marginLeft:'15%'}}>
+                                <Text style={{color:'#666666'}}>{strings.Mmhg}</Text>
+                                </View>
+                                <View style={styles.title2}>
+                                <Text style={{color:'#fff', fontSize: 12, fontWeight: 'bold',backgroundColor:'#ffffff'}}>
+                                    1111
+                                     </Text>
+                                     </View>
                             </View>
                             <View style={styles.title2}>
                                 <Text style={{fontSize: 36,marginTop:10,color: this.renderIsNormal(data.mostHighHistory, highPMarginalValue)?'#666666':'#666666'}}>{data.mostHighHistory}</Text>
@@ -214,6 +224,9 @@ class FindMore extends Component{
                                         {this.renderIsNormal(data.mostLowHistory, lowPMarginalValue)?strings.Normal:strings.High}
                                     </Text>
                                 </Text>
+                            </View>
+                            <View style={{marginLeft:'15%'}}>
+                                <Text style={{color:'#666666'}}>{strings.Mmhg}</Text>
                             </View>
                             <View style={styles.title2}>
                                 <Text style={{fontSize: 36,marginTop:10,color: this.renderIsNormal(data.mostLowHistory, lowPMarginalValue)?'#666666':'#666666'}}>
@@ -235,6 +248,9 @@ class FindMore extends Component{
                                     </Text>
                                 </Text>
                             </View>
+                            <View style={{marginLeft:'15%'}}>
+                                <Text style={{color:'#666666'}}>{strings.Mmhg}</Text>
+                            </View>
                             <View style={styles.title2}>
                                 <Text style={{fontSize: 36,marginTop:10,color: this.renderAverageIsNormal(data.lowAverage, data.highAverage, lowPMarginalValue, highPMarginalValue)?'#666666':'#666666'}}>
                                     {data.highAverage + "/" + data.lowAverage}
@@ -253,28 +269,59 @@ class FindMore extends Component{
                                     </Text>
                                 </Text>
                             </View>
+                            <View style={{marginLeft:'15%'}}>
+                                <Text style={{color:'#666666'}}>{strings.Mmhg}</Text>
+                            </View>
                             <View style={styles.title2averageWrong}>
                                 <Text style={{alignSelf: 'center',alignItems: 'center',fontSize: 36,marginTop:10,color: this.renderIsNormal(data.averageWrong, differentialPMarginalValue)?'#666666':'#666666'}}>
                                     {data.averageWrong}
                                 </Text>
 
                                 <TouchableOpacity style={{flex:1}} underlayColor='#838383' onPress={ () => {
-                                  AlertIOS.alert(
-                                      null,
-                                      parseInt(MHPluginSDK.systemInfo.sysVersion.charAt(0))>7?
-                                      ('脉压是指收缩压与舒张压之间\r\n'+
-                                      '的差值，正常范围是20-60\r\n'+
-                                      'mmHg，脉压偏大或偏小都是\r\n'+
-                                      '身体健康失衡的一种表现，应\r\n'+
-                                      '该及时去医院查明原因，治疗\r\n'+
-                                      '原发病。\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'):
-                                      ('脉压是指收缩压与舒张压之间\r\n'+
-                                      '的差值，正常范围是20-60\r\n'+
-                                      'mmHg，脉压偏大或偏小都是\r\n'+
-                                      '身体健康失衡的一种表现，应\r\n'+
-                                      '该及时去医院查明原因，治疗\r\n'+
-                                      '       原发病。                                              ')
-                                    )}}>
+
+                                    if (strings.更多 == '更多') {
+                                        AlertIOS.alert(
+                                            null,
+                                            parseInt(MHPluginSDK.systemInfo.sysVersion.charAt(0))>7?
+                                            ('脉压是指收缩压与舒张压之间\r\n'+
+                                            '的差值，正常范围是20-60\r\n'+
+                                            'mmHg，脉压偏大或偏小都是\r\n'+
+                                            '身体健康失衡的一种表现，应\r\n'+
+                                            '该及时去医院查明原因，治疗\r\n'+
+                                            '原发病。\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'):
+                                            ('脉压是指收缩压与舒张压之间\r\n'+
+                                            '的差值，正常范围是20-60\r\n'+
+                                            'mmHg，脉压偏大或偏小都是\r\n'+
+                                            '身体健康失衡的一种表现，应\r\n'+
+                                            '该及时去医院查明原因，治疗\r\n'+
+                                            '       原发病。                                              ')
+                                          )
+                                        
+                                    } else if (strings.更多 == 'More') {
+                                        AlertIOS.alert(
+                                            null,
+                                            parseInt(MHPluginSDK.systemInfo.sysVersion.charAt(0))>7?
+                                            ('Pulse pressure refers to the difference between\r\n'+
+                                            'systolic pressure and diastolic pressure, \r\n'+
+                                            'the normal range is 20-60mmHg,\r\n'+
+                                            'pulse pressure difference is large or\r\n'+
+                                            'small is a manifestation of physical health imbalance,\r\n'+
+                                            'should go to the hospital in time to find out the cause,, \r\n'+
+                                            'treatment of the original disease.\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'):
+                                            ('Pulse pressure refers to the difference between\r\n'+
+                                            'systolic pressure and diastolic pressure,\r\n'+
+                                            'the normal range is 20-60mmHg,\r\n'+
+                                            'pulse pressure difference is large or\r\n'+
+                                            'small is a manifestation of physical health imbalance,\r\n'+
+                                            'should go to the hospital in time to find out the cause,, \r\n'+
+                                            '      treatment of the original disease.                                              ')
+                                          )
+                                        
+                                    }
+
+
+                                  
+                                    }}>
                                     <Image style={{position:'absolute',right: 30,top: -30,width: 23,height: 23}} source={{isStatic:!this.state.devMode, uri:this.state.ihealthAandQPath}}/>
                                 </TouchableOpacity>
                             </View>
@@ -319,7 +366,10 @@ class FindMore extends Component{
                                     </Text>
                                 </Text>
                             </View>
-                            <View style={styles.title2}>
+                            <View style={{marginLeft:'15%'}}>
+                                <Text style={{color:'#666666'}}>{strings.Mmhg}</Text>
+                            </View>
+                            <View style={styles.title2} >
                                 <Text style={{fontSize: 42,marginTop:10,color: this.renderIsNormal(data.mostHighHistory, highPMarginalValue)?'#666666':'#666666'}}>{data.mostHighHistory}</Text>
                             </View>
                         </View>
@@ -334,6 +384,9 @@ class FindMore extends Component{
                                         {this.renderIsNormal(data.mostLowHistory, lowPMarginalValue)?strings.Normal:strings.High}
                                     </Text>
                                 </Text>
+                            </View>
+                            <View style={{marginLeft:'15%'}}>
+                                <Text style={{color:'#666666'}}>{strings.Mmhg}</Text>
                             </View>
                             <View style={styles.title2}>
                                 <Text style={{fontSize: 42,marginTop:10,color: this.renderIsNormal(data.mostHighHistory, lowPMarginalValue)?'#666666':'#666666'}}>
@@ -355,6 +408,9 @@ class FindMore extends Component{
                                     </Text>
                                 </Text>
                             </View>
+                            <View style={{marginLeft:'15%'}}>
+                                <Text style={{color:'#666666'}}>{strings.Mmhg}</Text>
+                            </View>
                             <View style={styles.title2}>
                                 <Text style={{fontSize: 42,marginTop:10,color: this.renderAverageIsNormal(data.lowAverage, data.highAverage, lowPMarginalValue, highPMarginalValue)?'#666666':'#666666'}}>
                                     {data.highAverage + "/" + data.lowAverage}
@@ -373,21 +429,69 @@ class FindMore extends Component{
                                     </Text>
                                 </Text>
                             </View>
+                            <View style={{marginLeft:'15%'}}>
+                                <Text style={{color:'#666666'}}>{strings.Mmhg}</Text>
+                            </View>
                             <View style={styles.title2averageWrong}>
                                 <Text style={{alignSelf: 'center',alignItems: 'center',fontSize: 42,marginTop:10,color: this.renderIsNormal(data.averageWrong, differentialPMarginalValue)?'#666666':'#666666'}}>
                                     {data.averageWrong}
                                 </Text>
 
                                 <TouchableOpacity style={{flex:1}} underlayColor='#838383' onPress={ () => {
-                                  Alert.alert(
-                                      null,
-                                      '脉压是指收缩压与舒张压之间\r\n'+
-                                      '的差值，正常范围是20-60\r\n'+
-                                      'mmHg，脉压偏大或偏小都是\r\n'+
-                                      '身体健康失衡的一种表现，应\r\n'+
-                                      '该及时去医院查明原因，治疗\r\n'+
-                                      '原发病。\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'
-                                    )}}>
+
+
+                                if (strings.更多 == '更多') {
+                                    Alert.alert(
+                                        null,
+                                        parseInt(MHPluginSDK.systemInfo.sysVersion.charAt(0))>7?
+                                        ('脉压是指收缩压与舒张压之间\r\n'+
+                                        '的差值，正常范围是20-60\r\n'+
+                                        'mmHg，脉压偏大或偏小都是\r\n'+
+                                        '身体健康失衡的一种表现，应\r\n'+
+                                        '该及时去医院查明原因，治疗\r\n'+
+                                        '原发病。\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'):
+                                        ('脉压是指收缩压与舒张压之间\r\n'+
+                                        '的差值，正常范围是20-60\r\n'+
+                                        'mmHg，脉压偏大或偏小都是\r\n'+
+                                        '身体健康失衡的一种表现，应\r\n'+
+                                        '该及时去医院查明原因，治疗\r\n'+
+                                        '       原发病。                                              ')
+                                    )
+                                    
+                                } else if (strings.更多 == 'More') {
+                                    Alert.alert(
+                                        null,
+                                        parseInt(MHPluginSDK.systemInfo.sysVersion.charAt(0))>7?
+                                        ('Pulse pressure refers to the difference between\r\n'+
+                                        'systolic pressure and diastolic pressure, \r\n'+
+                                        'the normal range is 20-60mmHg,\r\n'+
+                                        'pulse pressure difference is large or\r\n'+
+                                        'small is a manifestation of physical health imbalance,\r\n'+
+                                        'should go to the hospital in time to find out the cause,, \r\n'+
+                                        'treatment of the original disease.\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'):
+                                        ('Pulse pressure refers to the difference between\r\n'+
+                                        'systolic pressure and diastolic pressure,\r\n'+
+                                        'the normal range is 20-60mmHg,\r\n'+
+                                        'pulse pressure difference is large or\r\n'+
+                                        'small is a manifestation of physical health imbalance,\r\n'+
+                                        'should go to the hospital in time to find out the cause,, \r\n'+
+                                        '      treatment of the original disease.                                              ')
+                                    )
+                                    
+                                }
+
+
+
+                                //   Alert.alert(
+                                //       null,
+                                //       '脉压是指收缩压与舒张压之间\r\n'+
+                                //       '的差值，正常范围是20-60\r\n'+
+                                //       'mmHg，脉压偏大或偏小都是\r\n'+
+                                //       '身体健康失衡的一种表现，应\r\n'+
+                                //       '该及时去医院查明原因，治疗\r\n'+
+                                //       '原发病。\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'
+                                //     )
+                                    }}>
                                     <Image style={{position:'absolute',right: 42,top: -33,width: 25,height: 25}} source={{isStatic:!this.state.devMode, uri:this.state.ihealthAandQPath}}/>
                                 </TouchableOpacity>
                             </View>
