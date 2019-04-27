@@ -449,7 +449,9 @@ var HistoryListView = React.createClass({
                          padding:10
                     }]}>
                         <Image style={{marginLeft:0, marginTop:0, width:160, height:109}} source={{uri:MHPluginSDK.basePath+'iHealthSuccess.png'}} />
-                        <Text style={{position:'absolute', top:85, color:'#666666', left:57, fontSize:16}}>{strings.删除成功}</Text>
+                        <view style={{width:width, top:85, alignItems:'center',justifyContent: 'center',margin:5}}>
+                        <Text style={styles.AlertTextStyle}>{strings.删除成功}</Text>
+                        </view>
                     </Animated.View>
 
                 </View>
@@ -532,8 +534,11 @@ var HistoryListView = React.createClass({
                              padding:10
                           }]}>
                             <Image style={{marginLeft:0, marginTop:0, width:160, height:109}} source={{uri:MHPluginSDK.basePath+'iHealthSuccess.png'}} />
-                            <Text style={{position:'absolute', top:85, color:'#666666', left:57, fontSize:16}}>{strings.删除成功}</Text>
-                        </View>
+                            {/* <Text style={{position:'absolute', top:85, color:'#666666', left:57, fontSize:16}}>{strings.删除成功}</Text> */}
+                            <view style={{width:width, top:85, alignItems:'center',justifyContent: 'center',margin:5}}>
+                            <Text style={styles.AlertTextStyle}>{strings.删除成功}</Text>
+                            </view>
+                            </View>
                     </View>
                 ):(
                     <View>
@@ -937,7 +942,11 @@ var styles = StyleSheet.create({
         backgroundColor: '#dddddd',
         marginLeft:0,
         marginRight: 0,
-    }
+    },
+    AlertTextStyle:{
+        fontSize:16,
+        color:'#666666',
+       },
 });
 
 var route = {
