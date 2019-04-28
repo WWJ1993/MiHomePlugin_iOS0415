@@ -433,73 +433,73 @@ var HistoryListViewM = React.createClass({
         });
     },
 
-    _alertView_SUCCESS(height){
-        if(height){
-            return(
-                <View style={{
-                   position:'absolute',
-                   top:0,
-                   left:0,
-                   height:height,
-                   width:width,
-                   backgroundColor: 'rgba(111,111,111,.3)',
-                   alignItems:'center',
-                   //justifyContent:'center'
-                 }}>
+    // _alertView_SUCCESS(height){
+    //     if(height){
+    //         return(
+    //             <View style={{
+    //                position:'absolute',
+    //                top:0,
+    //                left:0,
+    //                height:height,
+    //                width:width,
+    //                backgroundColor: 'rgba(111,111,111,.3)',
+    //                alignItems:'center',
+    //                //justifyContent:'center'
+    //              }}>
 
-                    <Animated.View style={[{
-                         top:239,
-                         backgroundColor: 'white',
-                         borderRadius:5,
-                         padding:10
-                    }]}>
-                        <Image style={{marginLeft:0, marginTop:0, width:160, height:109}} source={{uri:MHPluginSDK.basePath+'iHealthSuccess.png'}} />
-                        <Text style={{position:'absolute', top:85, color:'#666666', left:57, fontSize:16}}>{strings.删除成功}</Text>
-                    </Animated.View>
+    //                 <Animated.View style={[{
+    //                      top:239,
+    //                      backgroundColor: 'white',
+    //                      borderRadius:5,
+    //                      padding:10
+    //                 }]}>
+    //                     <Image style={{marginLeft:0, marginTop:0, width:160, height:109}} source={{uri:MHPluginSDK.basePath+'iHealthSuccess.png'}} />
+    //                     <Text style={{position:'absolute', top:85, color:'#666666', left:57, fontSize:16}}>{strings.删除成功}</Text>
+    //                 </Animated.View>
 
-                </View>
-            )
-        }else{
-            return(
-                <View>
-                </View>
-            )
-        }
-    },
+    //             </View>
+    //         )
+    //     }else{
+    //         return(
+    //             <View>
+    //             </View>
+    //         )
+    //     }
+    // },
 
-    _alertView_FAILED(height){
-        if(!height){
-            return(
-                <View style={{
-                   position:'absolute',
-                   top:0,
-                   left:0,
-                   height:height,
-                   width:width,
-                   backgroundColor: 'rgba(111,111,111,.3)',
-                   alignItems:'center',
-                   justifyContent:'center'
-                 }}>
+    // _alertView_FAILED(height){
+    //     if(!height){
+    //         return(
+    //             <View style={{
+    //                position:'absolute',
+    //                top:0,
+    //                left:0,
+    //                height:height,
+    //                width:width,
+    //                backgroundColor: 'rgba(111,111,111,.3)',
+    //                alignItems:'center',
+    //                justifyContent:'center'
+    //              }}>
 
-                    <Animated.View style={[{
-                         top:239,
-                         backgroundColor: 'white',
-                         borderRadius:5,
-                         padding:10
-                    }]}>
-                        <Image style={{marginLeft:0, marginTop:0, width:160, height:109}} source={{uri:MHPluginSDK.basePath+'iHealthSuccess.png'}} />
-                        <Text style={{position:'absolute', top:85, color:'#666666', left:27, fontSize:16}}>{strings.删除失败请重试}</Text>
-                    </Animated.View>
+    //                 <Animated.View style={[{
+    //                      top:239,
+    //                      backgroundColor: 'white',
+    //                      borderRadius:5,
+    //                      padding:10
+    //                 }]}>
+    //                     <Image style={{marginLeft:0, marginTop:0, width:160, height:109}} source={{uri:MHPluginSDK.basePath+'iHealthSuccess.png'}} />
+    //                     <Text style={{position:'absolute', top:85, color:'#666666', left:27, fontSize:16}}>{strings.删除失败请重试}</Text>
+    //                 </Animated.View>
 
-                </View>
-            )
-        }else{
-            return(
-                <View>
-                </View>
-            )
-        }
-    },
+    //             </View>
+    //         )
+    //     }else{
+    //         return(
+    //             <View>
+    //             </View>
+    //         )
+    //     }
+    // },
 
     renderListView: function() {
         return (
@@ -536,7 +536,7 @@ var HistoryListViewM = React.createClass({
                              padding:10
                           }]}>
                             <Image style={{marginLeft:0, marginTop:0, width:160, height:109}} source={{uri:MHPluginSDK.basePath+'iHealthSuccess.png'}} />
-                            <Text style={{position:'absolute', top:85, color:'#666666', left:57, fontSize:16}}>{strings.删除成功}</Text>
+                            <Text style={{position:'absolute', top:85,width:160,height:40, color:'#666666', textAlign:'center', fontSize:16}}>{strings.删除成功}</Text>
                         </View>
                     </View>
                 ):(
